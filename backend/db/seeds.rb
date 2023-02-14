@@ -35,7 +35,7 @@ end
     description: Faker::Food.description,
     ingredients: [Faker::Food.ingredient, Faker::Food.ingredient, Faker::Food.ingredient],
     instructions: Faker::Restaurant.review,
-    recipe_image_url: Faker::SlackEmoji.food_and_drink,
+    recipe_image_url: Faker::Avatar.image,
     saved_recipe: Faker::Boolean.boolean,
     user_id: User.all.sample.id
 )
