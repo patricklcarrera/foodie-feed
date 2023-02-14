@@ -23,10 +23,12 @@ class ApplicationController < Sinatra::Base
 
 #new user sign-up 
   post '/users' do
-    user = User.create!(username: params[:username], 
+    user = User.create!(
+            name: params[:name],
+            username: params[:username], 
             password: params[:password], 
             email: params[:email],
-            profile_pic_url: params[:profile_pic_url],
+            photo: params[:photo],
             bio: params[:bio]
             )
     user.to_json

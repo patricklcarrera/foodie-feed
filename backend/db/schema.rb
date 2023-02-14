@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2023_02_13_194051) do
     t.string "username"
     t.string "email"
     t.string "password"
-    t.string "profile_pic_url"
+    t.string "photo"
     t.string "bio"
   end
 
