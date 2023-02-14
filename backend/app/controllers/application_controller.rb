@@ -31,6 +31,12 @@ class ApplicationController < Sinatra::Base
             )
     user.to_json
   end
+
+#get all comments
+  get '/comments' do
+    comments = Comment.all
+    comments.to_json
+  end
 #get all comments for one recipe
   get '/recipes/:id/comments' do
     comments = Recipe.find(params[:id]).comments

@@ -13,7 +13,14 @@ function App() {
 
   //state
   const [recipeList, setRecipeList] = useState([])
+  const [searchTerm, setSearch] = useState("")
+  
+  //change value on search bar
+  const changeSearch = (value) => {
+    setSearch(value)
+  }
 
+  //initial fetch all recipes
   useEffect(()=> {
     fetch("http://localhost:9292/recipes")
     .then(r => r.json())
@@ -21,12 +28,18 @@ function App() {
       setRecipeList(data)})
   }, [])
 
+  //initial fetch all comments
+
 
    //Add a recipe to the List of recipes
   const addRecipe = (newRecipe) => {
     const updatedRecipes = [...recipeList, newRecipe];
     setRecipeList(updatedRecipes)
   }
+
+  //display a list of recipes via search: recipe name
+
+  const filteredRecipes = recipeList.filter(recipe => recipe.name.toLowerCase().includes(searchTerm.toLowerCase()))
 
   return (
     <div>
@@ -42,7 +55,11 @@ function App() {
                 element={<AddRecipe addRecipe={addRecipe} setRecipeList={setRecipeList}/>}/>
               <Route 
                 path="/recipes" 
-                element={<RecipeList recipeList={recipeList}/>}/>
+                element={<RecipeList 
+                          recipeList={filteredRecipes}
+                          searchTerm={searchTerm}
+                          changeSearch={changeSearch}
+                          />}/>
               <Route 
                 path="/signup" 
                 element={<Signup/>}/>
