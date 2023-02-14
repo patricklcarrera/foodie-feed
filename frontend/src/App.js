@@ -13,7 +13,9 @@ function App() {
 
   //state
   const [recipeList, setRecipeList] = useState([])
+  const [ users, setUsers ] = useState([])
 
+  //fetches recipe data from db
   useEffect(()=> {
     fetch("http://localhost:9292/recipes")
     .then(r => r.json())
@@ -21,20 +23,32 @@ function App() {
       setRecipeList(data)})
   }, [])
 
-
-   //Add a recipe to the List of recipes
-  const addRecipe = (newRecipe) => {
+  //fetches user data from db
+  useEffect(()=> {
+      fetch("http://localhost:9292/users")
+      .then(response => response.json())
+      .then(data => {
+        setUsers(data)})
+    }, [])
+ 
+  const onAddUser = newUser => {
+    const newUserList = [...users, newUser]
+    setUsers(newUserList)
+  }
+  
+  //Add a recipe to the List of recipes
+    const addRecipe = (newRecipe) => {
     const updatedRecipes = [...recipeList, newRecipe];
     setRecipeList(updatedRecipes)
   }
-
+  
   return (
     <div>
             <Routes>
               <Route 
                 path="/" 
-                element={<Login/>}/>
-              <Route 
+                element={<Login users={users}/>}/>
+                 <Route 
                 path="/savedrecipes" 
                 element={<SavedRecipes/>}/>
               <Route 
@@ -45,7 +59,7 @@ function App() {
                 element={<RecipeList recipeList={recipeList}/>}/>
               <Route 
                 path="/signup" 
-                element={<Signup/>}/>
+                element={<Signup users={users} onAddUser={onAddUser}/>}/>
             </Routes>
     </div>
   );
