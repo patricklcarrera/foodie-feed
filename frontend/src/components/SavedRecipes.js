@@ -7,7 +7,8 @@ export default function SavedRecipes(){
     return (
         <>
             <Header/>
-                <div> This is Saved Recipes</div>
+                <h3>Saved Recipes</h3>
+                {/* <div>{savedRecipesToShow}</div> */}
         </>
     )
     

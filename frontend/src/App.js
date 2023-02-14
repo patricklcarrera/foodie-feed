@@ -13,6 +13,8 @@ function App() {
 
   //state
   const [recipeList, setRecipeList] = useState([])
+  const [savedItems, setSavedItems] = useState([])
+  
 
   useEffect(()=> {
     fetch("http://localhost:9292/recipes")
@@ -32,13 +34,20 @@ function App() {
                 element={<Login/>}/>
                  <Route 
                 path="/savedrecipes" 
-                element={<SavedRecipes/>}/>
+                element={<SavedRecipes
+                  setSavedItems={setSavedItems}
+                  savedItems={savedItems}
+                  />}/>
                   <Route 
                 path="/recipes/new" 
                 element={<AddRecipe/>}/>
                 <Route 
                 path="/recipelist" 
-                element={<RecipeList recipeList={recipeList}/>}/>
+                element={<RecipeList
+                 recipeList={recipeList}
+                 savedItems={savedItems}
+                 setSavedItems={setSavedItems}
+                 />}/>
                   <Route 
                 path="/signup" 
                 element={<Signup/>}/>

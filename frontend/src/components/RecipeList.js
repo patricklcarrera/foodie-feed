@@ -1,15 +1,18 @@
 import React from 'react';
 import Recipe from './Recipe'
+import Header from './Header';
 
 export default function RecipeList({recipeList}){
    console.log(recipeList)
-//    const recipes = recipeList.map(recipe => (
-//     <Recipe recipe={recipe} />
-//    ))
+
+
+   const recipes = recipeList.map(recipe => <Recipe recipeList={recipe}/>)
 
     return(
+        
         <div>
-            {recipeList.map(recipe => <Recipe recipeList={recipe}/>)}
+            <Header/>
+            {recipes}
         </div>
   )
  }
