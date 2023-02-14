@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect, useState } from 'react';
 import Header from './components/Header';
 import Login from './components/Login';
 import RecipeList from './components/RecipeList';
@@ -9,6 +10,19 @@ import { Route, Routes } from 'react-router-dom';
 
 function App() {
 
+
+  //state
+  const [recipeList, setRecipeList] = useState([])
+
+  useEffect(()=> {
+    fetch("http://localhost:9292/recipes")
+    .then(r => r.json())
+    .then(data => {
+      console.log(data)
+      setRecipeList(data)})
+  }, [])
+ 
+ 
   
   return (
     <div>
@@ -22,6 +36,9 @@ function App() {
                   <Route 
                 path="/recipes/new" 
                 element={<AddRecipe/>}/>
+                <Route 
+                path="/recipelist" 
+                element={<RecipeList recipeList={recipeList}/>}/>
                   <Route 
                 path="/signup" 
                 element={<Signup/>}/>
