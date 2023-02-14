@@ -3,7 +3,6 @@ require "faker"
 User.destroy_all
 Comment.destroy_all
 Recipe.destroy_all
-SavedRecipe.destroy_all
 
 puts "🌱 Seeding spices..."
 
@@ -15,38 +14,40 @@ puts "🌱 Seeding spices..."
     email: Faker::Internet.safe_email,
     password: Faker::Internet.password(min_length: 3, max_length: 8),
     profile_pic_url: Faker::Avatar.image,
-    bio: "My favorite food is #{Faker::Food.dish}",
-    # saved_recipes_id: SavedRecipe.all.sample.id
+    bio: "My favorite food is #{Faker::Food.dish}"
 )
 end
 
-10.times do Recipe.create(
+
+
+20.times do Recipe.create(
     name: Faker::Food.dish,
     description: Faker::Food.description,
     ingredients: [Faker::Food.ingredient, Faker::Food.ingredient, Faker::Food.ingredient],
     instructions: Faker::Restaurant.review,
-    recipe_image_url: Faker::SlackEmoji.food_and_drink
+    recipe_image_url: Faker::SlackEmoji.food_and_drink,
+    saved_recipe: Faker::Boolean.boolean,
+    user_id: User.all.sample.id
 )
 end
 
-5.times do Comment.create(
-    recipe_id: Recipe.all.sample.id,
-    user_id: User.all.sample.id,
-    content: "This was #{Faker::Adjective.negative}"
-)
-end
-
-5.times do Comment.create(
-    recipe_id: Recipe.all.sample.id,
-    user_id: User.all.sample.id,
-    content: "This was #{Faker::Adjective.positive}"
-)
-end
-
-10.times do SavedRecipe.create(
+20.times do Comment.create(
+    content: "This was #{Faker::Adjective.positive}",
     recipe_id: Recipe.all.sample.id,
     user_id: User.all.sample.id
 )
 end
+
+20.times do Comment.create(
+    
+    # saved_recipe_id: SavedRecipe.all.sample.id,
+    content: "This was #{Faker::Adjective.negative}",
+    recipe_id: Recipe.all.sample.id,
+    user_id: User.all.sample.id
+)
+end
+
+
+
 
 puts "✅ Done seeding!"
