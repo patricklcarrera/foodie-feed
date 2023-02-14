@@ -2,6 +2,12 @@ class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
   
   # Add your routes here
+
+  get '/users/:id' do
+    user = User.find(params[:id])
+    user.to_json
+  end
+
   get '/users' do
     users = User.all
     users.to_json
@@ -34,7 +40,7 @@ class ApplicationController < Sinatra::Base
     comments.to_json
   end
 
-  get 'recipes/:id' do
+  get '/recipes/:id' do
     recipe = Recipe.find(params[:id])
     recipe.to_json
   end
@@ -56,6 +62,40 @@ class ApplicationController < Sinatra::Base
     recipe.to_json
   end
 
+  delete '/recipes/:id' do
+    recipe = Recipe.find(params[:id])
+    recipe.destroy
+  end
+
+  post '/recipes/:id/comments/new' do
+    recipe = Recipe.find(params[:id])
+    comments = recipe.comments.create!(content: params[:content],
+                    recipe_id: params[:id],
+                    user_id: User.first.id)
+    comments.to_json
+  end
+
+  delete '/comments/:id' do
+    comment = Comment.find(params[:id])
+    comment.destroy
+  end
+
+  get '/saved_recipes' do
+    recipe = Recipe.all.where(saved_recipe: 1)
+    recipe.to_json
+  end
+
+  patch '/recipes/:id/saved_recipes/delete' do
+    recipe = Recipe.find(params[:id])
+    recipe.update(saved_recipe: 0)
+    recipe.to_json
+  end
+
+  patch '/recipes/:id/saved_recipes/add' do
+    recipe = Recipe.find(params[:id])
+    recipe.update(saved_recipe: 1)
+    recipe.to_json
+  end
 
 
 end
