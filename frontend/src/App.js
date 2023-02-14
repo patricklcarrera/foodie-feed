@@ -38,11 +38,6 @@ function App() {
   //initial fetch all comments
 
 
-   //Add a recipe to the List of recipes
-  const addRecipe = (newRecipe) => {
-    const updatedRecipes = [...recipeList, newRecipe];
-    setRecipeList(updatedRecipes)
-  }
 
   //display a list of recipes via search: recipe name
 

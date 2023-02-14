@@ -9,7 +9,6 @@ return (
             <NavLink to="/recipes"><button >All Recipes</button></NavLink>
             <NavLink to='/recipes/new'><button>Add Recipe</button></NavLink>
             <NavLink to='/savedrecipes'><button>My Saved Recipes</button></NavLink>
-            <NavLink to='/'><button>Log in / Sign up</button></NavLink>
             <button>Dark Mode</button>
     </h1>
 )

@@ -36,7 +36,7 @@ export default function Login({ users }){
 
         //if username and password belong to same user, then redirect
         if(foundUsername !== undefined && foundUsername=== foundPassword) {
-            navigate("/recipelist")
+            navigate("/recipes")
         }
         //if username is found but there is no username/password match, send alert
         else if(foundUsername !== undefined) {
@@ -53,7 +53,6 @@ export default function Login({ users }){
     
     return (
         <>
-            <Header/>
                 <form onSubmit={handleFormSubmit}>
                         <div>  
                             <label>Username:</label>
