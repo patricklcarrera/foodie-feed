@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2023_02_13_194051) do
     t.string "description"
     t.string "ingredients"
     t.string "instructions"
-    t.string "recipe_image_url"
+    t.string "image"
     t.boolean "saved_recipe"
     t.integer "user_id"
   end

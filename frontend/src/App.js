@@ -18,32 +18,36 @@ function App() {
     fetch("http://localhost:9292/recipes")
     .then(r => r.json())
     .then(data => {
-      console.log(data)
       setRecipeList(data)})
   }, [])
- 
- 
-  
+
+
+   //Add a recipe to the List of recipes
+  const addRecipe = (newRecipe) => {
+    const updatedRecipes = [...recipeList, newRecipe];
+    setRecipeList(updatedRecipes)
+  }
+
   return (
     <div>
             <Routes>
               <Route 
                 path="/" 
                 element={<Login/>}/>
-                 <Route 
+              <Route 
                 path="/savedrecipes" 
                 element={<SavedRecipes/>}/>
-                  <Route 
+              <Route 
                 path="/recipes/new" 
-                element={<AddRecipe/>}/>
-                <Route 
-                path="/recipelist" 
+                element={<AddRecipe addRecipe={addRecipe} setRecipeList={setRecipeList}/>}/>
+              <Route 
+                path="/recipes" 
                 element={<RecipeList recipeList={recipeList}/>}/>
-                  <Route 
+              <Route 
                 path="/signup" 
                 element={<Signup/>}/>
             </Routes>
-   </div>
+    </div>
   );
 }
 

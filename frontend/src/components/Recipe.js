@@ -8,7 +8,7 @@ export default function Recipe({recipeList}){
             <h2>{recipeList.description}</h2>
             <h2>{recipeList.ingredients}</h2>
             <h2>{recipeList.instructions}</h2>
-            <img src={recipeList.recipe_image_url}/>
+            <img src={recipeList.image}/>
         </div>
     )
     
