@@ -20,7 +20,7 @@ function App() {
                 path="/savedrecipes" 
                 element={<SavedRecipes/>}/>
                   <Route 
-                path="/addrecipe" 
+                path="/recipes/new" 
                 element={<AddRecipe/>}/>
                   <Route 
                 path="/signup" 

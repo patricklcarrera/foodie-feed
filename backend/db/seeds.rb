@@ -8,6 +8,16 @@ puts "🌱 Seeding spices..."
 
 # Seed your database here
 
+
+User.create(
+    name: "admin",
+    username: "admin",
+    email: "admin@mail.com",
+    password: "123",
+    profile_pic_url: Faker::Avatar.image,
+    bio: "My favorite food is #{Faker::Food.dish}"
+)
+
 10.times do User.create(
     name: Faker::Movies::HarryPotter.character,
     username: Faker::Name.unique.first_name,
