@@ -52,7 +52,7 @@ class ApplicationController < Sinatra::Base
                         description: params[:description],
                         ingredients: params[:ingredients],
                         instructions: params[:instructions],
-                        recipe_image_url: params[:recipe_image_url],
+                        image: params[:image],
                         saved_recipe: params[:saved_recipe],
                         user_id: User.first.id
                         )
