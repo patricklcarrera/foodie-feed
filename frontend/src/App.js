@@ -13,9 +13,20 @@ function App() {
 
   //state
   const [recipeList, setRecipeList] = useState([])
+
+  const [searchTerm, setSearch] = useState("")
+  
+  //change value on search bar
+  const changeSearch = (value) => {
+    setSearch(value)
+  }
+
+  //initial fetch all recipes
+
   const [ users, setUsers ] = useState([])
 
   //fetches recipe data from db
+
   useEffect(()=> {
     fetch("http://localhost:9292/recipes")
     .then(r => r.json())
@@ -23,6 +34,24 @@ function App() {
       setRecipeList(data)})
   }, [])
 
+<<<<<<< HEAD
+=======
+
+  //initial fetch all comments
+
+
+   //Add a recipe to the List of recipes
+  const addRecipe = (newRecipe) => {
+    const updatedRecipes = [...recipeList, newRecipe];
+    setRecipeList(updatedRecipes)
+  }
+
+  //display a list of recipes via search: recipe name
+
+  const filteredRecipes = recipeList.filter(recipe => recipe.name.toLowerCase().includes(searchTerm.toLowerCase()))
+
+
+>>>>>>> b1ee97ef298c327d3713016a80c2d6a4482908b6
   //fetches user data from db
   useEffect(()=> {
       fetch("http://localhost:9292/users")
@@ -36,12 +65,26 @@ function App() {
     setUsers(newUserList)
   }
   
+<<<<<<< HEAD
+=======
+  //Add a recipe to the List of recipes
+    const addRecipe = (newRecipe) => {
+    const updatedRecipes = [...recipeList, newRecipe];
+    setRecipeList(updatedRecipes)
+  }
+  
+
+>>>>>>> b1ee97ef298c327d3713016a80c2d6a4482908b6
   return (
     <div>
             <Routes>
               <Route 
                 path="/" 
+<<<<<<< HEAD
                 element={<Login/>}/>
+=======
+                element={<Login users={users}/>}/>
+>>>>>>> b1ee97ef298c327d3713016a80c2d6a4482908b6
                  <Route 
                 path="/savedrecipes" 
                 element={<SavedRecipes/>}/>
@@ -50,7 +93,11 @@ function App() {
                 element={<AddRecipe addRecipe={addRecipe} setRecipeList={setRecipeList}/>}/>
               <Route 
                 path="/recipes" 
-                element={<RecipeList recipeList={recipeList}/>}/>
+                element={<RecipeList 
+                          recipeList={filteredRecipes}
+                          searchTerm={searchTerm}
+                          changeSearch={changeSearch}
+                          />}/>
               <Route 
                 path="/signup" 
                 element={<Signup users={users} onAddUser={onAddUser}/>}/>
