@@ -69,7 +69,7 @@ function App() {
     const updatedRecipes = [...recipeList, newRecipe];
     setRecipeList(updatedRecipes)
   }
-  //helper function for adding to saved recipes
+
  
   return (
     <div>
