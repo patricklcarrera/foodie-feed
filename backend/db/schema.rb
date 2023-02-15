@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_13_194051) do
+ActiveRecord::Schema.define(version: 2023_02_13_194236) do
 
   create_table "comments", force: :cascade do |t|
-    t.string "content"
     t.integer "recipe_id"
     t.integer "user_id"
+    t.string "content"
   end
 
   create_table "recipes", force: :cascade do |t|
@@ -26,6 +26,11 @@ ActiveRecord::Schema.define(version: 2023_02_13_194051) do
     t.string "image"
     t.boolean "saved_recipe"
     t.integer "user_id"
+  end
+
+  create_table "saved_recipes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "recipe_id"
   end
 
   create_table "users", force: :cascade do |t|
