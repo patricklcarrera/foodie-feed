@@ -10,10 +10,7 @@ return (
             <NavLink to='/recipes/new'><button>Add Recipe</button></NavLink>
             <NavLink to='/savedrecipes'><button>My Saved Recipes</button></NavLink>
             <NavLink to='/users/:id/recipes'><button>My Recipes</button></NavLink>
-            <button>Dark Mode</button>
-            <button>Dark Mode</button>
-            <button>Dark Mode</button>
-            <button>Dark Mode</button>
+            {/* <button>Dark Mode</button> */}
 
     </h1>
 )
