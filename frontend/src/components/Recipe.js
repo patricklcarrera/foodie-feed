@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState} from 'react';
 
 
 export default function Recipe({recipe, addToSaved, users}){
@@ -9,19 +9,41 @@ export default function Recipe({recipe, addToSaved, users}){
     };
     const recipeComments = recipe.comments.map(comment => comment.content)
     console.log(recipeComments)
-    // const eachComment = recipeComments.map(content => content.replace('<br/', '/n'))
-    const commentsUser = users.map(user => user.username)
-    return (
+    // const eachComment = recipeComments.map(content => content.replace('<br/', '/n'))}
+
+        const [isBack, setIsBack] = useState(false);
+
+        //updates the state of isBack
+        const handleFlip = () => {
+            setIsBack(prev => !prev)
+        const commentsUser = users.map(user => user.username)
+        }
+    // only show photo and name
+    const front = 
         <div>
             <h1>{recipe.name}</h1>
-            <h2>{recipe.description}</h2>
-            <h2>{recipe.ingredients}</h2>
-            <h2>{recipe.instructions}</h2>
-            <img src={recipe.image}/>
+            <img src={recipe.image} onClick={handleFlip}/>
             {viewComments ? <button onClick={handleClick}>hide</button> : <button onClick= {handleClick}> view comments </button>}
             {viewComments ?  <p> {recipeComments} </p>: ''}
             <button onClick={()=> addToSaved(recipe)}>Save</button>
         </div>
-    )
-    
+
+
+    const back = 
+        <div>
+            <h1>{recipe.name}</h1>
+            <h3>{recipe.description}</h3>
+            <h3>{recipe.ingredients}</h3>
+            <h3>{recipe.instructions}</h3>
+            <img src={recipe.image} onClick={handleFlip}/>
+            {viewComments ? <button onClick={handleClick}>hide</button> : <button onClick= {handleClick}> view comments </button>}
+            {viewComments ?  <p> {recipeComments} </p>: ''}
+            <button onClick={()=> addToSaved(recipe)}>Save</button>
+        </div>
+    // show all details on click function
+
+    // display either the front or back depending on the current State
+  return (
+    isBack ? back : front
+  )
 }

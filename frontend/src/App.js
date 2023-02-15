@@ -66,7 +66,7 @@ function App() {
     const updatedRecipes = [...recipeList, newRecipe];
     setRecipeList(updatedRecipes)
   }
-  
+  //helper function for adding to saved recipes
  
   return (
     <div>
@@ -101,7 +101,7 @@ function App() {
                 element={<Signup users={users} onAddUser={onAddUser}/>}/>
               <Route
                 path='/users/:id/recipes'
-                element={<UserPage/>}/>
+                element={<UserPage comments={comments} addToSaved={addToSaved} users={users} recipeList={recipeList}/>}/>
             </Routes>
     </div>
   );
