@@ -1,6 +1,7 @@
 import React from 'react';
 
-export default function Recipe({recipeList, comments}){
+
+export default function Recipe({recipe, comments, handleClick}){
     const handleClick = () => {
         comments.map(comment => console.log(comment));
     }
@@ -12,6 +13,7 @@ export default function Recipe({recipeList, comments}){
             <h2>{recipeList.instructions}</h2>
             <img src={recipeList.image}/>
             <button onClick={handleClick}>view comments</button>
+            <button onClick={()=> handleClick(recipe)}>Save</button>
         </div>
     )
     

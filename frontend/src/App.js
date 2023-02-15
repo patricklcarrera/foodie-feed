@@ -17,10 +17,19 @@ function App() {
   const [comments, setComments] = useState([])
   const [searchTerm, setSearch] = useState("")
   const [ users, setUsers ] = useState([])
+   const [savedRecipes, setSavedRecipes] = useState([])
+   
   //change value on search bar
   const changeSearch = (value) => {
     setSearch(value)
   }
+
+  // helper function for adding to save
+  const addToSaved = (newSavedRecipe) => {
+    setSavedRecipes([...savedRecipes,newSavedRecipe])
+  }
+
+
 
   //fetches recipe data from db
   useEffect(()=> {
@@ -60,20 +69,27 @@ function App() {
     const updatedRecipes = [...recipeList, newRecipe];
     setRecipeList(updatedRecipes)
   }
-  
-
+  //helper function for adding to saved recipes
+ 
   return (
     <div>
             <Routes>
               <Route 
                 path="/" 
-                element={<Login users={users}/>}/>
-              <Route 
+                 element={<Login users={users}/>}
+                />
+                 <Route 
                 path="/savedrecipes" 
-                element={<SavedRecipes/>}/>
+                 element={<SavedRecipes
+                  savedRecipes={savedRecipes}
+                  />}
+                />
               <Route 
                 path="/recipes/new" 
-                element={<AddRecipe addRecipe={addRecipe} setRecipeList={setRecipeList}/>}/>
+                element={<AddRecipe 
+                  addRecipe={addRecipe} 
+                  setRecipeList={setRecipeList}/>}
+                />
               <Route 
                 path="/recipes" 
                 element={<RecipeList 
@@ -81,6 +97,7 @@ function App() {
                           searchTerm={searchTerm}
                           changeSearch={changeSearch}
                           comments={comments}
+                          addToSaved={addToSaved}
                           />}/>
               <Route 
                 path="/signup" 
@@ -97,19 +114,3 @@ export default App;
 
 
 
-
-// <Route path ="/login">
-// <Login />
-// </Route>
-// <Route path ="/signup">
-// <Signup />
-// </Route>
-// <Route path ="/home">
-// <Home />
-// </Route>
-// <Route path ="/savedrecipes">
-// <SavedRecipes />
-// </Route>
-// <Route path ="/addrecipe">
-// <AddRecipe />
-// </Route>
