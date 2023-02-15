@@ -10,13 +10,13 @@ export default function Signup({ users, onAddUser }){
         username: "",
         email: "",
         password: "",
-        profilePicture: "",
+        photo: "",
         bio: ""
     }
 
     //state for form
     const [ formData, setFormData ] = useState(initialFormValues)
-    const { name, username, email, password, profilePicture, bio } = formData
+    const { name, username, email, password, photo, bio } = formData
     
     //changes form data as user types
     const handleFormData = (e) => {
@@ -53,7 +53,7 @@ export default function Signup({ users, onAddUser }){
                 .then(newUser => {
                     onAddUser(formData)
                     setFormData(initialFormValues)
-                    navigate("/recipelist")
+                    navigate("/recipes")
                 })
                 .catch(() => {
                     alert("Something went wrong!")
@@ -110,8 +110,8 @@ export default function Signup({ users, onAddUser }){
                             <label>Profile Picture:</label>
                             <input 
                                 type="text" 
-                                name="profilePicture"
-                                value={formData.profilePicture}
+                                name="photo"
+                                value={formData.photo}
                                 onChange={handleFormData}
                             />
                         </div>
@@ -131,10 +131,3 @@ export default function Signup({ users, onAddUser }){
 }
 
 
-// t.string "name"
-// t.string "username"
-// t.string "email"
-// t.string "password"
-// t.string "profile_pic_url"
-// t.string "bio"
-// end

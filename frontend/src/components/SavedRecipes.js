@@ -1,14 +1,19 @@
 import React from 'react';
 import Header from './Header';
+import Recipe from './Recipe';
 
-export default function SavedRecipes(){
+export default function SavedRecipes({savedRecipes}){
 
     
     return (
-        <>
+        <div>
             <Header/>
-                <div> This is Saved Recipes</div>
-        </>
+                <div>
+              {savedRecipes.map(recipe =>(
+                <Recipe recipe={recipe}/>
+              ))}
+                </div>
+        </div>
     )
     
 }

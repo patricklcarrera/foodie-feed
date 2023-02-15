@@ -14,7 +14,7 @@ User.create(
     username: "admin",
     email: "admin@mail.com",
     password: "123",
-    profile_pic_url: Faker::Avatar.image,
+    photo: Faker::Avatar.image,
     bio: "My favorite food is #{Faker::Food.dish}"
 )
 
@@ -23,7 +23,7 @@ User.create(
     username: Faker::Name.unique.first_name,
     email: Faker::Internet.safe_email,
     password: Faker::Internet.password(min_length: 3, max_length: 8),
-    profile_pic_url: Faker::Avatar.image,
+    photo: Faker::Avatar.image,
     bio: "My favorite food is #{Faker::Food.dish}"
 )
 end
