@@ -1,14 +1,17 @@
 import React from 'react';
 
-export default function Recipe({recipeList}){
+export default function Recipe({recipe,handleClick}){
 
+
+  
     return (
         <div>
-            <h1>{recipeList.name}</h1>
-            <h2>{recipeList.description}</h2>
-            <h2>{recipeList.ingredients}</h2>
-            <h2>{recipeList.instructions}</h2>
-            <img src={recipeList.image}/>
+            <h1>{recipe.name}</h1>
+            <h2>{recipe.description}</h2>
+            <h2>{recipe.ingredients}</h2>
+            <h2>{recipe.instructions}</h2>
+            <img src={recipe.image}/>
+            <button onClick={()=> handleClick(recipe)}>Save</button>
         </div>
     )
     
