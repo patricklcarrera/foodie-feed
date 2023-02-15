@@ -62,6 +62,12 @@ function App() {
     const newUserList = [...users, newUser]
     setUsers(newUserList)
   }
+
+  //edit user profile
+    const onEditUserProfile = modifiedUser => {
+      const updateUser = users.map(user => user.id === 1 ? modifiedUser : user)
+      setUsers(updateUser)
+    }
   
   //Add a recipe to the List of recipes
     const addRecipe = (newRecipe) => {
@@ -103,7 +109,7 @@ function App() {
                 element={<Signup users={users} onAddUser={onAddUser}/>}/>
               <Route
                 path='/users/:id/recipes'
-                element={<UserPage comments={comments} addToSaved={addToSaved} users={users} recipeList={recipeList}/>}/>
+                element={<UserPage onEditUserProfile={onEditUserProfile} comments={comments} addToSaved={addToSaved} users={users} recipeList={recipeList}/>}/>
             </Routes>
     </div>
   );
