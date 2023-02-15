@@ -9,7 +9,7 @@ export default function Recipe({recipe, addToSaved, users}){
     };
     const recipeComments = recipe.comments.map(comment => comment.content)
     const eachComment = recipeComments.forEach(content => content)
-    const commentsUser = users.map(user => user.username)
+    // const commentsUser = users.map(user => user.username)
     
         const [isBack, setIsBack] = useState(false);
 

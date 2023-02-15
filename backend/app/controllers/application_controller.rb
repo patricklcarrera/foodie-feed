@@ -59,7 +59,7 @@ class ApplicationController < Sinatra::Base
 #get all recipes
   get '/recipes' do
     recipes = Recipe.all
-    recipes.to_json(include: :comments)
+    recipes.to_json(include: {comments: {include: :user}})
   end
 #create a new recipe (within the first user's account)
   post '/recipes/new' do

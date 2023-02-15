@@ -24,7 +24,9 @@ function App() {
     fetch("http://localhost:9292/recipes")
     .then(r => r.json())
     .then(data => {
-      setRecipeList(data)})
+      setRecipeList(data)
+      // console.log(data)
+    })
   }, [])
 
 
@@ -67,7 +69,7 @@ function App() {
     setRecipeList(updatedRecipes)
   }
   //helper function for adding to saved recipes
- 
+ console.log(users)
   return (
     <div>
             <Routes>
