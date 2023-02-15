@@ -16,8 +16,6 @@ ActiveRecord::Schema.define(version: 2023_02_13_194051) do
     t.string "content"
     t.integer "recipe_id"
     t.integer "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "recipes", force: :cascade do |t|
