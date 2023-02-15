@@ -8,15 +8,14 @@ export default function Recipe({recipe, addToSaved, users}){
     setViewComments(prev => !prev)
     };
     const recipeComments = recipe.comments.map(comment => comment.content)
-    console.log(recipeComments)
-    // const eachComment = recipeComments.map(content => content.replace('<br/', '/n'))}
-
+    const eachComment = recipeComments.forEach(content => content)
+    const commentsUser = users.map(user => user.username)
+    
         const [isBack, setIsBack] = useState(false);
 
         //updates the state of isBack
         const handleFlip = () => {
             setIsBack(prev => !prev)
-        const commentsUser = users.map(user => user.username)
         }
     // only show photo and name
     const front = 
@@ -24,7 +23,7 @@ export default function Recipe({recipe, addToSaved, users}){
             <h1>{recipe.name}</h1>
             <img src={recipe.image} onClick={handleFlip}/>
             {viewComments ? <button onClick={handleClick}>hide</button> : <button onClick= {handleClick}> view comments </button>}
-            {viewComments ?  <p> {recipeComments} </p>: ''}
+            {viewComments ?  <p> {eachComment} </p>: ''}
             <button onClick={()=> addToSaved(recipe)}>Save</button>
         </div>
 
@@ -46,4 +45,4 @@ export default function Recipe({recipe, addToSaved, users}){
   return (
     isBack ? back : front
   )
-}
+  }
