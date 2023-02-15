@@ -17,8 +17,8 @@ function App() {
   const [comments, setComments] = useState([])
   const [searchTerm, setSearch] = useState("")
   const [ users, setUsers ] = useState([])
-   const [savedRecipes, setSavedRecipes] = useState([])
-   
+  const [savedRecipes, setSavedRecipes] = useState([])
+
   //change value on search bar
   const changeSearch = (value) => {
     setSearch(value)
