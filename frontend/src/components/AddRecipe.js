@@ -32,7 +32,8 @@ export default function AddRecipe({addRecipe, setRecipeList}){
     }) }
 
     return(
-        <div> 
+        <div>
+            <Header/>
         <h1>Add a new recipe</h1>
             <form onSubmit={handleSubmit}>
                 <input 
