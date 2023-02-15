@@ -14,7 +14,7 @@ export default function RecipeList({recipeList, searchTerm, changeSearch, commen
             <Search
                 searchTerm = {searchTerm}
                 changeSearch= {changeSearch}/>
-            {recipeList.map(recipe => <Recipe recipeList={recipe} comments={comments}/>)}
+            {recipeList.map(recipe => <Recipe recipe={recipe} comments={comments} addToSaved={addToSaved}/>)}
             {/* {comments.map(comment => <Recipe comment={comment}/>)} */}
             {recipes}
         </div>
