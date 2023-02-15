@@ -14,22 +14,10 @@ function App() {
 
   //state
   const [recipeList, setRecipeList] = useState([])
-  const [comments, setComments] = useState([])
   const [searchTerm, setSearch] = useState("")
   const [ users, setUsers ] = useState([])
+  const [comments, setComments] = useState([])
   const [savedRecipes, setSavedRecipes] = useState([])
-
-  //change value on search bar
-  const changeSearch = (value) => {
-    setSearch(value)
-  }
-
-  // helper function for adding to save
-  const addToSaved = (newSavedRecipe) => {
-    setSavedRecipes([...savedRecipes,newSavedRecipe])
-  }
-
-
 
   //fetches recipe data from db
   useEffect(()=> {
@@ -40,13 +28,6 @@ function App() {
   }, [])
 
 
-  //initial fetch all comments
-  useEffect(() => {
-    fetch("http://localhost:9292/comments")
-    .then(r => r.json())
-    .then(data => {setComments(data)})
-  }, [])
-
   //fetches user data from db
   useEffect(()=> {
       fetch("http://localhost:9292/users")
@@ -54,6 +35,22 @@ function App() {
       .then(data => {
         setUsers(data)})
     }, [])
+// fetch comments
+// useEffect(()=> {
+//   fetch("http://localhost:9292/comments")
+//   .then(response => response.json())
+//   .then(data => {
+//     setComments(data)})
+// }, [])
+  //change value on search bar
+  const changeSearch = (value) => {
+    setSearch(value)
+  }
+
+  // helper function for adding to save
+  const addToSaved = (newSavedRecipe) => {
+    setSavedRecipes([...savedRecipes,newSavedRecipe])
+  }
 
   //display a list of recipes via search: recipe name
   const filteredRecipes = recipeList.filter(recipe => recipe.name.toLowerCase().includes(searchTerm.toLowerCase()))
@@ -69,18 +66,18 @@ function App() {
     const updatedRecipes = [...recipeList, newRecipe];
     setRecipeList(updatedRecipes)
   }
-  //helper function for adding to saved recipes
+  
  
   return (
     <div>
             <Routes>
               <Route 
                 path="/" 
-                 element={<Login users={users}/>}
+                element={<Login users={users}/>}
                 />
-                 <Route 
+              <Route 
                 path="/savedrecipes" 
-                 element={<SavedRecipes
+                element={<SavedRecipes
                   savedRecipes={savedRecipes}
                   />}
                 />
@@ -96,8 +93,8 @@ function App() {
                           recipeList={filteredRecipes}
                           searchTerm={searchTerm}
                           changeSearch={changeSearch}
-                          comments={comments}
                           addToSaved={addToSaved}
+                          users={users}
                           />}/>
               <Route 
                 path="/signup" 
