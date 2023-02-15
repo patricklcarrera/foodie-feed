@@ -34,24 +34,16 @@ function App() {
       setRecipeList(data)})
   }, [])
 
-<<<<<<< HEAD
-=======
 
   //initial fetch all comments
 
 
-   //Add a recipe to the List of recipes
-  const addRecipe = (newRecipe) => {
-    const updatedRecipes = [...recipeList, newRecipe];
-    setRecipeList(updatedRecipes)
-  }
 
   //display a list of recipes via search: recipe name
 
   const filteredRecipes = recipeList.filter(recipe => recipe.name.toLowerCase().includes(searchTerm.toLowerCase()))
 
 
->>>>>>> b1ee97ef298c327d3713016a80c2d6a4482908b6
   //fetches user data from db
   useEffect(()=> {
       fetch("http://localhost:9292/users")
@@ -65,8 +57,6 @@ function App() {
     setUsers(newUserList)
   }
   
-<<<<<<< HEAD
-=======
   //Add a recipe to the List of recipes
     const addRecipe = (newRecipe) => {
     const updatedRecipes = [...recipeList, newRecipe];
@@ -74,17 +64,12 @@ function App() {
   }
   
 
->>>>>>> b1ee97ef298c327d3713016a80c2d6a4482908b6
   return (
     <div>
             <Routes>
               <Route 
                 path="/" 
-<<<<<<< HEAD
-                element={<Login/>}/>
-=======
                 element={<Login users={users}/>}/>
->>>>>>> b1ee97ef298c327d3713016a80c2d6a4482908b6
                  <Route 
                 path="/savedrecipes" 
                 element={<SavedRecipes/>}/>
