@@ -7,11 +7,18 @@ class ApplicationController < Sinatra::Base
     user = User.find(params[:id])
     user.to_json
   end
+
+  #get recipes written by a user
+  get '/users/:id/recipes' do
+    user = User.find(params[:id])
+    recipes = Recipe.where(user_id: user)
+    recipes.to_json
+  end
 #getting all users
   get '/users' do
     users = User.all
     users.to_json
-   end
+  end
   
 # /login 
 # verify the password and email

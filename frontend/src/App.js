@@ -6,6 +6,7 @@ import RecipeList from './components/RecipeList';
 import SavedRecipes from './components/SavedRecipes';
 import Signup from './components/Signup';
 import AddRecipe from './components/AddRecipe';
+import UserPage from './components/UserPage';
 import { Route, Routes } from 'react-router-dom';
 
 function App() {
@@ -13,20 +14,15 @@ function App() {
 
   //state
   const [recipeList, setRecipeList] = useState([])
-
+  const [comments, setComments] = useState([])
   const [searchTerm, setSearch] = useState("")
-  
+  const [ users, setUsers ] = useState([])
   //change value on search bar
   const changeSearch = (value) => {
     setSearch(value)
   }
 
-  //initial fetch all recipes
-
-  const [ users, setUsers ] = useState([])
-
   //fetches recipe data from db
-
   useEffect(()=> {
     fetch("http://localhost:9292/recipes")
     .then(r => r.json())
@@ -36,13 +32,11 @@ function App() {
 
 
   //initial fetch all comments
-
-
-
-  //display a list of recipes via search: recipe name
-
-  const filteredRecipes = recipeList.filter(recipe => recipe.name.toLowerCase().includes(searchTerm.toLowerCase()))
-
+  useEffect(() => {
+    fetch("http://localhost:9292/comments")
+    .then(r => r.json())
+    .then(data => {setComments(data)})
+  }, [])
 
   //fetches user data from db
   useEffect(()=> {
@@ -51,7 +45,11 @@ function App() {
       .then(data => {
         setUsers(data)})
     }, [])
- 
+
+  //display a list of recipes via search: recipe name
+  const filteredRecipes = recipeList.filter(recipe => recipe.name.toLowerCase().includes(searchTerm.toLowerCase()))
+
+  //Add new user to the user database
   const onAddUser = newUser => {
     const newUserList = [...users, newUser]
     setUsers(newUserList)
@@ -70,7 +68,7 @@ function App() {
               <Route 
                 path="/" 
                 element={<Login users={users}/>}/>
-                 <Route 
+              <Route 
                 path="/savedrecipes" 
                 element={<SavedRecipes/>}/>
               <Route 
@@ -82,10 +80,14 @@ function App() {
                           recipeList={filteredRecipes}
                           searchTerm={searchTerm}
                           changeSearch={changeSearch}
+                          comments={comments}
                           />}/>
               <Route 
                 path="/signup" 
                 element={<Signup users={users} onAddUser={onAddUser}/>}/>
+              <Route
+                path='/users/:id/recipes'
+                element={<UserPage/>}/>
             </Routes>
     </div>
   );

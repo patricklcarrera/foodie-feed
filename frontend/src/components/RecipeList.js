@@ -3,7 +3,7 @@ import Recipe from './Recipe'
 import Search from './Search'
 import Header from './Header'
 
-export default function RecipeList({recipeList, searchTerm, changeSearch}){
+export default function RecipeList({recipeList, searchTerm, changeSearch, comments}){
 
 //    const recipes = recipeList.map(recipe => (
 //     <Recipe recipe={recipe} />
@@ -15,7 +15,8 @@ export default function RecipeList({recipeList, searchTerm, changeSearch}){
             <Search
                 searchTerm = {searchTerm}
                 changeSearch= {changeSearch}/>
-            {recipeList.map(recipe => <Recipe recipeList={recipe}/>)}
+            {recipeList.map(recipe => <Recipe recipeList={recipe} comments={comments}/>)}
+            {/* {comments.map(comment => <Recipe comment={comment}/>)} */}
         </div>
   )
  }
