@@ -62,11 +62,19 @@ useEffect(()=> {
     const newUserList = [...users, newUser]
     setUsers(newUserList)
   }
+
   //add a comment to the list of comments for the recipe
     const addComment = (newComment) => {
       const updatedComments = [...comments, newComment];
       setComments(updatedComments)
+    
+
+  //edit user profile
+    const onEditUserProfile = modifiedUser => {
+      const updateUser = users.map(user => user.id === 1 ? modifiedUser : user)
+      setUsers(updateUser)
     }
+
   //Add a recipe to the List of recipes
     const addRecipe = (newRecipe) => {
     const updatedRecipes = [...recipeList, newRecipe];
@@ -107,7 +115,7 @@ useEffect(()=> {
                 element={<Signup users={users} onAddUser={onAddUser}/>}/>
               <Route
                 path='/users/:id/recipes'
-                element={<UserPage comments={comments} addToSaved={addToSaved} users={users} recipeList={recipeList}/>}/>
+                element={<UserPage onEditUserProfile={onEditUserProfile} comments={comments} addToSaved={addToSaved} users={users} recipeList={recipeList}/>}/>
             </Routes>
     </div>
   );
