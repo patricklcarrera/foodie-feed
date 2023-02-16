@@ -30,7 +30,7 @@ function App() {
   }, [])
 
 
-  //fetches user data from db
+  //fetches user data from db.......
   useEffect(()=> {
       fetch("http://localhost:9292/users")
       .then(response => response.json())
