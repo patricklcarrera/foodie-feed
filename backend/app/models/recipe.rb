@@ -3,7 +3,4 @@ class Recipe < ActiveRecord::Base
     has_many :comments
     has_many :users, through: :comments
 
-    def comments_and_their_users
-        self.comments.map { |comment| `#{comment.user.username} #{comment.content}`}
-    end
 end

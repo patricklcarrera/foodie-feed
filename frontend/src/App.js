@@ -15,7 +15,7 @@ function App() {
   //state
   const [recipeList, setRecipeList] = useState([])
   const [searchTerm, setSearch] = useState("")
-  const [ users, setUsers ] = useState([])
+  const [users, setUsers ] = useState([])
   const [comments, setComments] = useState([])
   const [savedRecipes, setSavedRecipes] = useState([])
 
@@ -37,13 +37,13 @@ function App() {
       .then(data => {
         setUsers(data)})
     }, [])
-// fetch comments
-// useEffect(()=> {
-//   fetch("http://localhost:9292/comments")
-//   .then(response => response.json())
-//   .then(data => {
-//     setComments(data)})
-// }, [])
+//fetch comments
+useEffect(()=> {
+  fetch("http://localhost:9292/comments")
+  .then(response => response.json())
+  .then(data => {
+    setComments(data)})
+}, [])
   //change value on search bar
   const changeSearch = (value) => {
     setSearch(value)
@@ -62,14 +62,17 @@ function App() {
     const newUserList = [...users, newUser]
     setUsers(newUserList)
   }
-  
+  //add a comment to the list of comments for the recipe
+    const addComment = (newComment) => {
+      const updatedComments = [...comments, newComment];
+      setComments(updatedComments)
+    }
   //Add a recipe to the List of recipes
     const addRecipe = (newRecipe) => {
     const updatedRecipes = [...recipeList, newRecipe];
     setRecipeList(updatedRecipes)
   }
   //helper function for adding to saved recipes
- console.log(users)
   return (
     <div>
             <Routes>
@@ -97,6 +100,7 @@ function App() {
                           changeSearch={changeSearch}
                           addToSaved={addToSaved}
                           users={users}
+                          addComment={addComment}
                           />}/>
               <Route 
                 path="/signup" 
