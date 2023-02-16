@@ -1,0 +1,27 @@
+#body {
+    background: #ffffff;
+}
+
+@font-face {
+    font-family: 'Flower Glory';
+    src: url(./fonts/Flower\ Glory.ttf);
+}
+
+@font-face {
+    font-family: 'addRecipe';
+    src: url(./fonts/addRecipe.ttf)
+}
+.addNewRecipeText {
+    font-family: 'addRecipe';
+    font-size: 50px
+}
+.addRecipeForm {
+    width: 50%;
+    margin: auto
+}
+
+.addButton {
+    width: 50%;
+    margin: auto
+}
+
