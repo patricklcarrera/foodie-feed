@@ -91,7 +91,6 @@ export default function UserPage({ recipeList, users, comments, addToSaved, onEd
                     {recipeList.filter(recipe => recipe.user_id === users[0].id).map(recipe => <Recipe key={recipe.id}recipe={recipe} comments={comments} addToSaved={addToSaved}/>)}
                     
                 </div>
-              
             </>
             : 
             <h1>Loading ...</h1>

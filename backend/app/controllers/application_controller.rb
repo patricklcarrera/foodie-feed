@@ -14,6 +14,8 @@ class ApplicationController < Sinatra::Base
     recipes = Recipe.where(user_id: user)
     recipes.to_json
   end
+
+
 #getting all users
   get '/users' do
     users = User.all

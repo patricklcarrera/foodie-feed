@@ -2,7 +2,7 @@ import React, { useState} from 'react';
 
 
 
-export default function Recipe({onDeleteRecipe, recipe, addToSaved, users}){
+export default function Recipe({onDeleteRecipe, recipe, addToSaved, addComment}){
     const {id} = recipe
 
         const handleDelete = () => {
@@ -18,25 +18,29 @@ export default function Recipe({onDeleteRecipe, recipe, addToSaved, users}){
     setViewComments(prev => !prev)
     };
 
-    const [comments, setComments] = useState("")
+    const [comments, setComments] = useState([])
     const url = "http://localhost:9292/recipes"
 
-    
+    const handleChange = (e) => {
+        const {name, value} = e.target
+        setComments({...comments, [name]:value})
+    }
+
     const commentSubmit = (e) => {
         e.preventDefault()
-       
-    console.log("need to add comment") }
-    //     fetch(`${url}/${id}/comments/new`
-    //     , {method: "POST",
-    //     headers: {
-    //         "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(comments),
-    //     })
-    //     .then(response => response.json())
-    //     .then(() => {
-    //     addComment(comments)
-    // }) }
+    fetch(`${url}/${id}/comments/new`
+        , {method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(comments),
+        })
+        .then(response => response.json())
+        .then(() => {
+        addComment(comments)
+        window.location.reload(false)
+    }) }
+    //     
         const [isBack, setIsBack] = useState(false);
 
         //updates the state of isBack
@@ -53,10 +57,10 @@ export default function Recipe({onDeleteRecipe, recipe, addToSaved, users}){
             <form onSubmit={commentSubmit}>
                 <input 
                 type= 'text'
-                name="write comment"
+                name="content"
                 placeholder="Add a comment"
-                value={comments}
-                onChange={(e) => setComments(e.target.value)}/>
+                value={comments.content}
+                onChange={handleChange}/>
                 <input
                     type='submit'
                     value='Post'/>
@@ -80,8 +84,8 @@ export default function Recipe({onDeleteRecipe, recipe, addToSaved, users}){
                 type= 'text'
                 name="write comment"
                 placeholder="Add a comment"
-                value={comments}
-                onChange={(e) => setComments(e.target.value)}/>
+                value={comments.content}
+                onChange={handleChange}/>
                 <input
                     type='submit'
                     value='Post'/>
