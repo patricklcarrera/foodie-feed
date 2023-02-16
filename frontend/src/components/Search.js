@@ -1,5 +1,6 @@
 import React from 'react';
 import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
 
 export default function Search({searchTerm, changeSearch}){
     
@@ -8,16 +9,20 @@ export default function Search({searchTerm, changeSearch}){
     }
 
     return (
-        <div>
-            <Form>
-            <Form.Group>
-                <Form.Control
-                    value={searchTerm}
-                    type="text"
-                    placeholder='Looking for a recipe?'
-                    onChange={handleChange}/>
-                    </Form.Group>
-                </Form>
-        </div>
+      
+        <InputGroup className="mb-3">
+          <InputGroup.Text id="inputGroup-sizing-default">
+            Search
+          </InputGroup.Text>
+          <Form.Control
+            aria-label="Default"
+            aria-describedby="inputGroup-sizing-default"
+            value={searchTerm}
+            type="text"
+            placeholder='Looking for a recipe?'
+            onChange={handleChange}
+          />
+        </InputGroup>
+
     )
 }
