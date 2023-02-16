@@ -3,9 +3,6 @@ import { NavLink, useNavigate } from "react-router-dom";
 import Header from './Header';
 import mainicon from './assets/mainicon.png'
 
-let sectionStyle = {
-    backgroundImage: `url(${mainicon})`
- }
 export default function Login({ users }){
 
     //clears form boxes

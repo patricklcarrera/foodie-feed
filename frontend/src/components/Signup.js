@@ -63,7 +63,6 @@ export default function Signup({ users, onAddUser }){
     
     return (
         <>
-        <Header/>
             <h1> Sign up to Foodie Feed!</h1>
                 <form onSubmit={handleFormSubmit}>
                         <div>  

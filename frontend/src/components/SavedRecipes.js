@@ -15,7 +15,7 @@ export default function SavedRecipes({savedRecipes}){
     return (
         <div>
             <Header/>
-                <div>
+            <div class="row row-cols-5 g-3" >
               {savedRecipesToShow}
                 </div>
                 
