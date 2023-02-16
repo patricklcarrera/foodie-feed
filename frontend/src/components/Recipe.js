@@ -62,7 +62,7 @@ export default function Recipe({onDeleteRecipe, recipe, addToSaved, users}){
                     type='submit'
                     value='Post'/>
             </form>
-            <Button onClick={()=> addToSaved(recipe)}style={{margin: '10px'}} variant="success">Save</Button>
+            <Button onClick={()=> addToSaved(recipe)}style={{margin: '15px'}} variant="success">Save</Button>
             <Button onClick={() => handleDelete()} variant="danger" style={{margin: '10px'}}>Delete</Button>
 
          
