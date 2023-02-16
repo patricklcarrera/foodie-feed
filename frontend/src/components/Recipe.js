@@ -3,22 +3,23 @@ import {Button , Card, Form} from 'react-bootstrap';
 
 
 
-export default function Recipe({onDeleteRecipe, recipe, addToSaved, addComment}){
+export default function Recipe({users, onDeleteRecipe, recipe, addToSaved, addComment}){
     const {id} = recipe
 
         const handleDelete = () => {
-
-        if (recipe.user_id === 1) {
+        if (recipe.user_id === 20) {
+          
             fetch(`http://localhost:9292/recipes/${id}}`,
             { method: 'DELETE' })
             .then(() => onDeleteRecipe(id))
-            .catch(err => alert(err))
+            // .catch(err => alert(err))
         }
         else {
             alert("You cannot delete a recipe that you didn't post!")
         }
+        
     }
-
+  
 
     const [viewComments, setViewComments] = useState(false)
     const handleClick = () => {

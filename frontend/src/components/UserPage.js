@@ -6,7 +6,7 @@ import Image from "react-bootstrap/Image"
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-export default function UserPage({ recipeList, users, comments, addToSaved, onEditUserProfile }) {
+export default function UserPage({ onDeleteRecipe,recipeList, users, comments, addToSaved, onEditUserProfile }) {
 
     //after recipeList and users load, filters through to find the recipes made by the first user, then maps over to create a Recipe card for each
 
@@ -102,7 +102,7 @@ export default function UserPage({ recipeList, users, comments, addToSaved, onEd
                         </div>
                     </div>
                     <div class="row row-cols-5 g-3" style={{margin: '5%', textAlign: 'center', width: '100%'}}>
-                        {recipeList.filter(recipe => recipe.user_id === users[0].id).map(recipe => <Recipe key={recipe.id}recipe={recipe} comments={comments} addToSaved={addToSaved}/>)}
+                        {recipeList.filter(recipe => recipe.user_id === users[0].id).map(recipe => <Recipe onDeleteRecipe={onDeleteRecipe} key={recipe.id}recipe={recipe} comments={comments} addToSaved={addToSaved}/>)}
                     </div>
                     
                 </div>

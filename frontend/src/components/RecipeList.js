@@ -17,7 +17,7 @@ export default function RecipeList({ onDeleteRecipe, recipeList, searchTerm, cha
         addComment={addComment}
         />)
     
-
+        console.log({users})
 
     return(
         <>
