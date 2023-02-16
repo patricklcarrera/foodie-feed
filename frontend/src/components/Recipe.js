@@ -1,5 +1,5 @@
 import React, { useState} from 'react';
-import {Button , Card} from 'react-bootstrap';
+import {Button , Card, Form} from 'react-bootstrap';
 
 
 
@@ -61,21 +61,27 @@ export default function Recipe({onDeleteRecipe, recipe, addToSaved, addComment})
                 <Card.Body>
                     <Card.Title>{recipe.name}</Card.Title>
                     <Card.Img width={200} height={200} src={recipe.image} onClick={handleFlip}/>
-                    <Card.Body>{viewComments ? <Button variant="warning" style={{position: 'center'}} onClick={handleClick}>hide</Button> : <Button variant="warning" onClick= {handleClick}> view comments </Button>}</Card.Body>
-                    {viewComments ? recipe.comments.map(comment => <Card.Body> <Card.Img src={comment.user.photo}/> {comment.user.username}  <p> {comment.content}</p> </Card.Body>  ) : ''} 
-                    <form onSubmit={commentSubmit}>
-                        <input 
-                        type= 'text'
-                        name="content"
-                        placeholder="Add a comment"
-                        value={comments.content}
-                        onChange={handleChange}/>
-                        <input
+                        <Card.Body>{viewComments ? 
+                                <Button variant="secondary" style={{position: 'center'}} onClick={handleClick}>hide</Button> : 
+                                <Button variant="secondary" onClick= {handleClick}> view comments </Button>}
+                        </Card.Body>
+                                {viewComments ? recipe.comments.map(comment => 
+                                <Card.Body> Username: {comment.user.username} 
+                                <Card.Body> Comment: {comment.content}</Card.Body> 
+                        </Card.Body>  ) : ''} 
+                    <Form onSubmit={commentSubmit}>
+                        <Form.Control 
+                            type= 'text'
+                            name="content"
+                            placeholder="Add a comment"
+                            value={comments.content}
+                            onChange={handleChange}/>
+                        <Form.Control
                             type='submit'
                             value='Post'/>
-                    </form>
-                    <Button onClick={()=> addToSaved(recipe)}style={{margin: '20px'}} variant="success">Save</Button>
-                    <Button onClick={() => handleDelete()} variant="danger" style={{margin: '10px'}}>Delete</Button>
+                    </Form>
+                    <Button onClick={()=> addToSaved(recipe)}style={{margin: '20px'}} variant="dark">Save</Button>
+                    <Button onClick={() => handleDelete()} variant="dark" style={{margin: '10px'}}>Delete</Button>
                 </Card.Body>
             </Card>
             
@@ -86,12 +92,12 @@ export default function Recipe({onDeleteRecipe, recipe, addToSaved, addComment})
         <div>
             <Card border="dark" style={{ width: '23rem' }}>
                 <Card.Title>{recipe.name}</Card.Title>
-                <Card.Img  style ={{width: '100px'}}src={recipe.image} onClick={handleFlip}/>
-                <Card.Body>Description: {recipe.description}</Card.Body>
-                <Card.Body>Ingredients: {recipe.ingredients}</Card.Body>
-                <Card.Body>Instruction: {recipe.instructions}</Card.Body>
-                {viewComments ? <Button variant="success"  onClick={handleClick}>hide</Button> : <Button variant="success" onClick= {handleClick}> view comments </Button>}
-                {viewComments ? recipe.comments.map(comment => <ul> <Card.Img src={comment.user.photo}/> {comment.user.username} <Card.Body> {comment.content}</Card.Body> </ul>  ) : ''}
+                    <Card.Img  style ={{width: '100px'}}src={recipe.image} onClick={handleFlip}/>
+                        <Card.Body>Description: {recipe.description}</Card.Body>
+                        <Card.Body>Ingredients: {recipe.ingredients}</Card.Body>
+                        <Card.Body>Instruction: {recipe.instructions}</Card.Body>
+                            {viewComments ? <Button variant="secondary"  onClick={handleClick}>hide</Button> : <Button variant="secondary" onClick= {handleClick}> view comments </Button>}
+                            {viewComments ? recipe.comments.map(comment => <ul> Username: {comment.user.username} <Card.Body> Comment: {comment.content}</Card.Body> </ul>  ) : ''}
                 <form onSubmit={commentSubmit}>
                     <input 
                     type= 'text'
@@ -103,8 +109,8 @@ export default function Recipe({onDeleteRecipe, recipe, addToSaved, addComment})
                         type='submit'
                         value='Post'/>
                 </form>
-                <Button onClick={()=> addToSaved(recipe)}style={{margin: '20px'}} variant="success">Save</Button>
-                <Button onClick={() => handleDelete()} variant="danger" style={{margin: '10px'}}>Delete</Button>
+                <Button onClick={()=> addToSaved(recipe)}style={{margin: '20px'}} variant="dark">Save</Button>
+                <Button onClick={() => handleDelete()} variant="dark" style={{margin: '10px'}}>Delete</Button>
             </Card>
         </div>
     // show all details on click function
@@ -117,3 +123,4 @@ return (
 
 
 // {comment.created_at}
+{/* <Card.Img style ={{width: '125px'}} src={comment.user.photo}/> */}
