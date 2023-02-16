@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from "react-router-dom";
+import Header from './Header';
+import mainicon from './assets/mainicon.png'
 
 export default function Login({ users }){
 
@@ -52,6 +54,7 @@ export default function Login({ users }){
     
     return (
         <>
+        <img src={mainicon} style={{width: '300px'} }/>
                 <form onSubmit={handleFormSubmit}>
                         <div>  
                             <label>Username:</label>
