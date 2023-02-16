@@ -1,4 +1,5 @@
 import React, { useState} from 'react';
+import Button from 'react-bootstrap/Button';
 
 
 
@@ -65,8 +66,11 @@ export default function Recipe({onDeleteRecipe, recipe, addToSaved, addComment})
                     type='submit'
                     value='Post'/>
             </form>
-            <button onClick={()=> addToSaved(recipe)}>Save</button>
-            <button onClick={() => handleDelete()}>Delete</button>
+            <Button onClick={()=> addToSaved(recipe)}style={{margin: '15px'}} variant="success">Save</Button>
+            <Button onClick={() => handleDelete()} variant="danger" style={{margin: '10px'}}>Delete</Button>
+
+         
+            
         </div>
 
 
