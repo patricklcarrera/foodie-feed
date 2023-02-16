@@ -1,7 +1,14 @@
 import React, { useState} from 'react';
 
 
-export default function Recipe({recipe, addToSaved, users}){
+export default function Recipe({onDeleteRecipe, recipe, addToSaved, users}){
+    const {id} = recipe
+        const handleDelete = () => {
+        fetch(`http://localhost:9292/recipes/${id}}`,
+        { method: 'DELETE' })
+        .then(() => onDeleteRecipe(id))
+        .catch(err => alert(err))
+    }
     const [viewComments, setViewComments] = useState(false)
     const handleClick = () => {
     // comments = recipe.comments.map(comment => comment.content)
@@ -10,6 +17,7 @@ export default function Recipe({recipe, addToSaved, users}){
     const recipeComments = recipe.comments.map(comment => comment.content)
     const eachComment = recipeComments.forEach(content => content)
     // const commentsUser = users.map(user => user.username)
+
     
         const [isBack, setIsBack] = useState(false);
 
@@ -25,6 +33,7 @@ export default function Recipe({recipe, addToSaved, users}){
             {viewComments ? <button onClick={handleClick}>hide</button> : <button onClick= {handleClick}> view comments </button>}
             {viewComments ?  <p> {eachComment} </p>: ''}
             <button onClick={()=> addToSaved(recipe)}>Save</button>
+            <button onClick={() => handleDelete()}>Delete</button>
         </div>
 
 
@@ -38,6 +47,7 @@ export default function Recipe({recipe, addToSaved, users}){
             {viewComments ? <button onClick={handleClick}>hide</button> : <button onClick= {handleClick}> view comments </button>}
             {viewComments ?  <p> {recipeComments} </p>: ''}
             <button onClick={()=> addToSaved(recipe)}>Save</button>
+            <button onClick={() => handleDelete()}>Delete</button>
         </div>
     // show all details on click function
 

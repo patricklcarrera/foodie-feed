@@ -63,6 +63,14 @@ function App() {
     setUsers(newUserList)
   }
 
+  const recipeId = recipeList.map(recipe => recipe.id)
+  console.log(recipeId)
+  
+    const onDeleteRecipe = (id) => {
+      const updatedRecipeList = recipeList.filter((recipe) => recipe.id !== id)
+      setRecipeList(updatedRecipeList)
+    }
+
   //edit user profile
     const onEditUserProfile = modifiedUser => {
       const updateUser = users.map(user => user.id === 1 ? modifiedUser : user)
@@ -103,6 +111,7 @@ function App() {
                           changeSearch={changeSearch}
                           addToSaved={addToSaved}
                           users={users}
+                          onDeleteRecipe={onDeleteRecipe}
                           />}/>
               <Route 
                 path="/signup" 
