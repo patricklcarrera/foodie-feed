@@ -9,6 +9,7 @@ export default function Search({searchTerm, changeSearch}){
     }
 
     return (
+      
         <InputGroup className="mb-3">
           <InputGroup.Text id="inputGroup-sizing-default">
             Search
@@ -22,5 +23,6 @@ export default function Search({searchTerm, changeSearch}){
             onChange={handleChange}
           />
         </InputGroup>
+
     )
 }

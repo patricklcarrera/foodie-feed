@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import Header from './Header';
+import Form from 'react-bootstrap/Form';
 
 
 export default function AddRecipe({addRecipe}){
@@ -36,41 +37,43 @@ export default function AddRecipe({addRecipe}){
         <div>
             <Header/>
         <h1>Add a new recipe</h1>
-            <form onSubmit={handleSubmit}>
-                <input 
+        <Form  onSubmit={handleSubmit}>
+        <Form.Group>
+            <Form.Control
                     type="text" 
                     name="name"
                     placeholder="name"
                     value={formData.name}
                     onChange={handleChange}/>
-                <input 
+              <Form.Control 
                     type="text" 
                     name="description"
                     placeholder='description'
                     value={formData.description}
                     onChange={handleChange}/>
-                <input 
+              <Form.Control
                     type="text" 
                     name="ingredients"
                     placeholder='ingredients'
                     value={formData.ingredients}
                     onChange={handleChange}/>
-                <input 
+               <Form.Control 
                     type="text" 
                     name="instructions"
                     placeholder='instructions'
                     value={formData.instructions}
                     onChange={handleChange}/>
-                <input 
+             <Form.Control
                     type="text" 
                     name="image"
                     placeholder= "Image url"
                     value={formData.image}
                     onChange={handleChange}/>
-                <input 
+                <Form.Control
                     type='submit' 
                     value="Create"/>
-            </form>
+            </Form.Group>
+            </Form>
         </div>
     
     )

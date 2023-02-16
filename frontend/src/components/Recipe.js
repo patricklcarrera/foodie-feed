@@ -53,10 +53,10 @@ export default function Recipe({onDeleteRecipe, recipe, addToSaved, addComment})
         <div>
             <Card border="dark" style={{ width: '17rem' }}>
                 <Card.Body>
-                    <h1>{recipe.name}</h1>
+                    <Card.Title>{recipe.name}</Card.Title>
                     <Card.Img width={200} height={200} src={recipe.image} onClick={handleFlip}/>
-                    <h1>{viewComments ? <Button variant="warning" style={{position: 'center'}} onClick={handleClick}>hide</Button> : <Button variant="warning" onClick= {handleClick}> view comments </Button>}</h1>
-                    {viewComments ? recipe.comments.map(comment => <h3> <img src={comment.user.photo}/> {comment.user.username} {comment.created_at} <p> {comment.content}</p> </h3>  ) : ''} 
+                    <Card.Body>{viewComments ? <Button variant="warning" style={{position: 'center'}} onClick={handleClick}>hide</Button> : <Button variant="warning" onClick= {handleClick}> view comments </Button>}</Card.Body>
+                    {viewComments ? recipe.comments.map(comment => <Card.Body> <Card.Img src={comment.user.photo}/> {comment.user.username}  <p> {comment.content}</p> </Card.Body>  ) : ''} 
                     <form onSubmit={commentSubmit}>
                         <input 
                         type= 'text'
@@ -78,26 +78,28 @@ export default function Recipe({onDeleteRecipe, recipe, addToSaved, addComment})
 
     const back = 
         <div>
-            <h1>{recipe.name}</h1>
-            <Card.Img width={200} height={200} style ={{width: '100px'}}src={recipe.image} onClick={handleFlip}/>
-            <h3>Description: {recipe.description}</h3>
-            <h3>Ingredients: {recipe.ingredients}</h3>
-            <h3>Instruction: {recipe.instructions}</h3>
-            {viewComments ? <Button variant="success"  onClick={handleClick}>hide</Button> : <Button variant="success" onClick= {handleClick}> view comments </Button>}
-            {viewComments ? recipe.comments.map(comment => <h3> <img src={comment.user.photo}/> {comment.user.username} {comment.created_at} <p> {comment.content}</p> </h3>  ) : ''}
-            <form onSubmit={commentSubmit}>
-                <input 
-                type= 'text'
-                name="write comment"
-                placeholder="Add a comment"
-                value={comments.content}
-                onChange={handleChange}/>
-                <input
-                    type='submit'
-                    value='Post'/>
-            </form>
-            <Button onClick={()=> addToSaved(recipe)}style={{margin: '20px'}} variant="success">Save</Button>
-            <Button onClick={() => handleDelete()} variant="danger" style={{margin: '10px'}}>Delete</Button>
+            <Card border="dark" style={{ width: '23rem' }}>
+                <Card.Title>{recipe.name}</Card.Title>
+                <Card.Img  style ={{width: '100px'}}src={recipe.image} onClick={handleFlip}/>
+                <Card.Body>Description: {recipe.description}</Card.Body>
+                <Card.Body>Ingredients: {recipe.ingredients}</Card.Body>
+                <Card.Body>Instruction: {recipe.instructions}</Card.Body>
+                {viewComments ? <Button variant="success"  onClick={handleClick}>hide</Button> : <Button variant="success" onClick= {handleClick}> view comments </Button>}
+                {viewComments ? recipe.comments.map(comment => <ul> <Card.Img src={comment.user.photo}/> {comment.user.username} <Card.Body> {comment.content}</Card.Body> </ul>  ) : ''}
+                <form onSubmit={commentSubmit}>
+                    <input 
+                    type= 'text'
+                    name="write comment"
+                    placeholder="Add a comment"
+                    value={comments.content}
+                    onChange={handleChange}/>
+                    <input
+                        type='submit'
+                        value='Post'/>
+                </form>
+                <Button onClick={()=> addToSaved(recipe)}style={{margin: '20px'}} variant="success">Save</Button>
+                <Button onClick={() => handleDelete()} variant="danger" style={{margin: '10px'}}>Delete</Button>
+            </Card>
         </div>
     // show all details on click function
 
@@ -106,3 +108,6 @@ return (
     isBack ? back : front
 )
 }
+
+
+// {comment.created_at}
