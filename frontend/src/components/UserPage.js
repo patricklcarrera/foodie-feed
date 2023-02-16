@@ -46,9 +46,9 @@ export default function UserPage({ recipeList, users, comments, addToSaved, onEd
                 onEditUserProfile(formData)
                 setFormData(initialFormValues)
                 setShowingForm(false)
-                {recipeList.filter(recipe => recipe.user_id === users[0].id).map(recipe => <Recipe key={recipe.id}recipe={recipe} comments={comments} addToSaved={addToSaved}/>)}
+                window.location.reload(false)
             })
-            // navigate("/users/:id/recipes")
+
     }
 
     const form = 
