@@ -4,7 +4,7 @@ import Search from './Search'
 import Header from './Header'
 
 
-export default function RecipeList({onDeleteRecipe, recipeList, searchTerm, changeSearch, addToSaved, users,handleDelete}){
+export default function RecipeList({ onDeleteRecipe, recipeList, searchTerm, changeSearch, addToSaved, users, handleDelete, addComment}){
 
 
     const recipes = recipeList.map(recipe => <Recipe 
@@ -14,8 +14,9 @@ export default function RecipeList({onDeleteRecipe, recipeList, searchTerm, chan
         addToSaved={addToSaved}
         recipe={recipe} 
         users={users}
+        addComment={addComment}
         />)
-
+    
 
 
     return(

@@ -115,6 +115,8 @@ useEffect(()=> {
                           addToSaved={addToSaved}
                           users={users}
                           onDeleteRecipe={onDeleteRecipe}
+                          comments={comments}
+                          setComments={setComments}
                           addComment={addComment}
                           />}/>
               <Route 
