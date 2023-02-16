@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import Header from './Header';
 
-export default function AddRecipe({addRecipe, setRecipeList}){
+export default function AddRecipe({addRecipe}){
     const initialFormData = {
         name: '',
         description: '',
