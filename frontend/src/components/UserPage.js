@@ -43,6 +43,7 @@ export default function UserPage({ recipeList, users, comments, addToSaved, onEd
                 onEditUserProfile(formData)
                 setFormData(initialFormValues)
                 setShowingForm(false)
+                window.location.reload(false)
             })
     }
 
@@ -55,6 +56,7 @@ export default function UserPage({ recipeList, users, comments, addToSaved, onEd
                     name="photo"
                     value={formData.photo}
                     onChange={handleFormData}
+                    required
                 />
             </div>
             <div>
@@ -64,6 +66,7 @@ export default function UserPage({ recipeList, users, comments, addToSaved, onEd
                     name="bio"
                     value={formData.bio}
                     onChange={handleFormData}
+                    required
                 />
             </div>
             <button type="submit">done editing</button>
