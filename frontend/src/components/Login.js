@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from "react-router-dom";
-import Header from './Header';
 
 export default function Login({ users }){
 
