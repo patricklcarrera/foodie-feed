@@ -83,10 +83,10 @@ class ApplicationController < Sinatra::Base
     recipe.to_json
   end
 # #delete one recipe
-#   delete '/recipes/:id' do
-#     recipe = Recipe.find(params[:id])
-#     recipe.destroy
-#   end
+  delete '/recipes/:id' do
+    recipe = Recipe.find(params[:id])
+    recipe.destroy
+  end
 #write a new comment for the specific recipe
   post '/recipes/:id/comments/new' do
     recipe = Recipe.find(params[:id])

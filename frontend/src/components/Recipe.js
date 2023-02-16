@@ -7,10 +7,17 @@ export default function Recipe({onDeleteRecipe, recipe, addToSaved, addComment})
     const {id} = recipe
 
         const handleDelete = () => {
-        fetch(`http://localhost:9292/recipes/${id}}`,
-        { method: 'DELETE' })
-        .then(() => onDeleteRecipe(id))
-        .catch(err => alert(err))
+            console.log(recipe)
+
+        if (recipe.user_id === 1) {
+            fetch(`http://localhost:9292/recipes/${id}}`,
+            { method: 'DELETE' })
+            .then(() => onDeleteRecipe(id))
+            .catch(err => alert(err))
+        }
+        else {
+            alert("You cannot delete a recipe that you didn't post!")
+        }
     }
 
 
