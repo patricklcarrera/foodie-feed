@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Header from './Header'
 import Recipe from './Recipe'
+import { useNavigate } from "react-router-dom";
 
 export default function UserPage({ recipeList, users, comments, addToSaved, onEditUserProfile }) {
 
@@ -25,6 +26,8 @@ export default function UserPage({ recipeList, users, comments, addToSaved, onEd
         setShowingForm(true)
     }
 
+    const navigate = useNavigate()
+
     const handleFormSubmit = (e) => {
         e.preventDefault()
         setShowingForm(false)
@@ -43,7 +46,9 @@ export default function UserPage({ recipeList, users, comments, addToSaved, onEd
                 onEditUserProfile(formData)
                 setFormData(initialFormValues)
                 setShowingForm(false)
+                {recipeList.filter(recipe => recipe.user_id === users[0].id).map(recipe => <Recipe key={recipe.id}recipe={recipe} comments={comments} addToSaved={addToSaved}/>)}
             })
+            // navigate("/users/:id/recipes")
     }
 
     const form = 
@@ -55,6 +60,7 @@ export default function UserPage({ recipeList, users, comments, addToSaved, onEd
                     name="photo"
                     value={formData.photo}
                     onChange={handleFormData}
+                    required
                 />
             </div>
             <div>
@@ -64,6 +70,7 @@ export default function UserPage({ recipeList, users, comments, addToSaved, onEd
                     name="bio"
                     value={formData.bio}
                     onChange={handleFormData}
+                    required
                 />
             </div>
             <button type="submit">done editing</button>

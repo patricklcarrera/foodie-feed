@@ -19,6 +19,13 @@ class ApplicationController < Sinatra::Base
     users = User.all
     users.to_json
   end
+
+  #edit user profile
+  patch '/users/:id' do
+    user = User.find(params[:id])
+    user.update(photo: params[:photo], bio: params[:bio])
+    user.to_json
+  end
   
 # /login 
 # verify the password and email
