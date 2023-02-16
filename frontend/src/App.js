@@ -25,7 +25,6 @@ function App() {
     .then(r => r.json())
     .then(data => {
       setRecipeList(data)
-      // console.log(data)
     })
   }, [])
 
@@ -63,9 +62,6 @@ useEffect(()=> {
     setUsers(newUserList)
   }
 
-
-  const recipeId = recipeList.map(recipe => recipe.id)
-  console.log(recipeId)
   
     const onDeleteRecipe = (id) => {
       const updatedRecipeList = recipeList.filter((recipe) => recipe.id !== id)
@@ -75,7 +71,7 @@ useEffect(()=> {
   //add a comment to the list of comments for the recipe
     const addComment = (newComment) => {
       const updatedComments = [...comments, newComment];
-      setComments(updatedComments)
+      setComments(updatedComments)}
     
 
 

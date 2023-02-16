@@ -4,6 +4,7 @@ import React, { useState} from 'react';
 
 export default function Recipe({onDeleteRecipe, recipe, addToSaved, users}){
     const {id} = recipe
+
         const handleDelete = () => {
         fetch(`http://localhost:9292/recipes/${id}}`,
         { method: 'DELETE' })
@@ -17,10 +18,6 @@ export default function Recipe({onDeleteRecipe, recipe, addToSaved, users}){
     setViewComments(prev => !prev)
     };
 
-    const recipeComments = recipe.comments.map(comment => comment.content)
-    const eachComment = recipeComments.forEach(content => content)
-    // const commentsUser = users.map(user => user.username)
-
     const [comments, setComments] = useState("")
     const url = "http://localhost:9292/recipes"
 
@@ -28,7 +25,7 @@ export default function Recipe({onDeleteRecipe, recipe, addToSaved, users}){
     const commentSubmit = (e) => {
         e.preventDefault()
        
-    console.log("clicked") }
+    console.log("need to add comment") }
     //     fetch(`${url}/${id}/comments/new`
     //     , {method: "POST",
     //     headers: {
