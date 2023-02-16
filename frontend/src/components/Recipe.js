@@ -1,14 +1,29 @@
 import React, { useState} from 'react';
 
 
-export default function Recipe({recipe, addToSaved, addComment}){
+
+export default function Recipe({onDeleteRecipe, recipe, addToSaved, users}){
+    const {id} = recipe
+        const handleDelete = () => {
+        fetch(`http://localhost:9292/recipes/${id}}`,
+        { method: 'DELETE' })
+        .then(() => onDeleteRecipe(id))
+        .catch(err => alert(err))
+    }
+
+
     const [viewComments, setViewComments] = useState(false)
     const handleClick = () => {
     setViewComments(prev => !prev)
     };
 
+    const recipeComments = recipe.comments.map(comment => comment.content)
+    const eachComment = recipeComments.forEach(content => content)
+    // const commentsUser = users.map(user => user.username)
+
     const [comments, setComments] = useState("")
     const url = "http://localhost:9292/recipes"
+
     
     const commentSubmit = (e) => {
         e.preventDefault()
@@ -50,6 +65,7 @@ export default function Recipe({recipe, addToSaved, addComment}){
                     value='Post'/>
             </form>
             <button onClick={()=> addToSaved(recipe)}>Save</button>
+            <button onClick={() => handleDelete()}>Delete</button>
         </div>
 
 
@@ -74,6 +90,7 @@ export default function Recipe({recipe, addToSaved, addComment}){
                     value='Post'/>
             </form>
             <button onClick={()=> addToSaved(recipe)}>Save</button>
+            <button onClick={() => handleDelete()}>Delete</button>
         </div>
     // show all details on click function
 

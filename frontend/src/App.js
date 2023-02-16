@@ -63,11 +63,21 @@ useEffect(()=> {
     setUsers(newUserList)
   }
 
+
+  const recipeId = recipeList.map(recipe => recipe.id)
+  console.log(recipeId)
+  
+    const onDeleteRecipe = (id) => {
+      const updatedRecipeList = recipeList.filter((recipe) => recipe.id !== id)
+      setRecipeList(updatedRecipeList)
+    }
+
   //add a comment to the list of comments for the recipe
     const addComment = (newComment) => {
       const updatedComments = [...comments, newComment];
       setComments(updatedComments)
     
+
 
   //edit user profile
     const onEditUserProfile = modifiedUser => {
@@ -108,6 +118,7 @@ useEffect(()=> {
                           changeSearch={changeSearch}
                           addToSaved={addToSaved}
                           users={users}
+                          onDeleteRecipe={onDeleteRecipe}
                           addComment={addComment}
                           />}/>
               <Route 

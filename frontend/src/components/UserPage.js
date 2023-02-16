@@ -82,7 +82,9 @@ export default function UserPage({ recipeList, users, comments, addToSaved, onEd
                     <p>{users[0].bio}</p>
                     {showingForm ? form : <button onClick={handleShowForm}>edit profile</button>}
                     {recipeList.filter(recipe => recipe.user_id === users[0].id).map(recipe => <Recipe key={recipe.id}recipe={recipe} comments={comments} addToSaved={addToSaved}/>)}
+                    
                 </div>
+              
             </>
             : 
             <h1>Loading ...</h1>
