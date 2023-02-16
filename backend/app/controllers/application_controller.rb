@@ -20,6 +20,7 @@ class ApplicationController < Sinatra::Base
     users.to_json
   end
 
+  #edit user profile
   patch '/users/:id' do
     user = User.find(params[:id])
     user.update(photo: params[:photo], bio: params[:bio])

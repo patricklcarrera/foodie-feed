@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Header from './Header'
 import Recipe from './Recipe'
+import { useNavigate } from "react-router-dom";
 
 export default function UserPage({ recipeList, users, comments, addToSaved, onEditUserProfile }) {
 
@@ -25,6 +26,8 @@ export default function UserPage({ recipeList, users, comments, addToSaved, onEd
         setShowingForm(true)
     }
 
+    const navigate = useNavigate()
+
     const handleFormSubmit = (e) => {
         e.preventDefault()
         setShowingForm(false)
@@ -45,6 +48,7 @@ export default function UserPage({ recipeList, users, comments, addToSaved, onEd
                 setShowingForm(false)
                 window.location.reload(false)
             })
+
     }
 
     const form = 
