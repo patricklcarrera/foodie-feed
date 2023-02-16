@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import Header from './Header';
-
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
 export default function AddRecipe({addRecipe}){
     const initialFormData = {
@@ -35,42 +36,51 @@ export default function AddRecipe({addRecipe}){
     return(
         <div>
             <Header/>
-        <h1>Add a new recipe</h1>
-            <form onSubmit={handleSubmit}>
-                <input 
-                    type="text" 
+        <h1 style={{"text-align" : "center"}} className="addNewRecipeText">Add a new recipe🥘</h1>
+        <Form onSubmit={handleSubmit} className="addRecipeForm">
+            <Form.Group>
+                <Form.Control
+                    type="text"
+                    as="textarea" rows={1}
                     name="name"
-                    placeholder="name"
+                    placeholder="Name"
                     value={formData.name}
                     onChange={handleChange}/>
-                <input 
-                    type="text" 
+                <Form.Control
+                    type="text"
+                    as="textarea" rows={2}
                     name="description"
-                    placeholder='description'
+                    placeholder='Description'
                     value={formData.description}
                     onChange={handleChange}/>
-                <input 
-                    type="text" 
+                <Form.Control
+                    type="text"
+                    as="textarea" rows={3}
                     name="ingredients"
-                    placeholder='ingredients'
+                    placeholder='Ingredients'
                     value={formData.ingredients}
                     onChange={handleChange}/>
-                <input 
-                    type="text" 
+                <Form.Control
+                    type="text"
                     name="instructions"
-                    placeholder='instructions'
+                    as="textarea" rows={6}
+                    placeholder='Instructions'
                     value={formData.instructions}
                     onChange={handleChange}/>
-                <input 
-                    type="text" 
+                <Form.Control
+                    type="text"
                     name="image"
-                    placeholder= "Image url"
+                    placeholder="Image Url"
                     value={formData.image}
                     onChange={handleChange}/>
-                <input 
-                    type='submit' 
-                    value="Create"/>
-            </form>
+                <Button
+                    className='addButton'
+                    type='submit'
+                    variant='outline-warning'>
+                        Add
+                </Button>
+            </Form.Group>
+        </Form>
         </div>
     
     )
