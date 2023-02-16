@@ -20,13 +20,15 @@ export default function RecipeList({ onDeleteRecipe, recipeList, searchTerm, cha
 
 
     return(
-        <div>
-            <Header/>
-            <Search
+        <>
+        <Header/>
+        <Search
                 searchTerm = {searchTerm}
                 changeSearch= {changeSearch}/>
-            {recipes}
-            
+        <div class="row row-cols-5 g-3" >
+          
+            {recipes} 
         </div>
+        </>
 )
 }
