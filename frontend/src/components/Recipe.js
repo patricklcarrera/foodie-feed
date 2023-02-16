@@ -7,7 +7,6 @@ export default function Recipe({onDeleteRecipe, recipe, addToSaved, addComment})
     const {id} = recipe
 
         const handleDelete = () => {
-            console.log(recipe)
 
         if (recipe.user_id === 1) {
             fetch(`http://localhost:9292/recipes/${id}}`,
