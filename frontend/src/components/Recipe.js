@@ -1,5 +1,5 @@
 import React, { useState} from 'react';
-import Button from 'react-bootstrap/Button';
+import {Button , Card} from 'react-bootstrap';
 
 
 
@@ -51,25 +51,27 @@ export default function Recipe({onDeleteRecipe, recipe, addToSaved, addComment})
     // only show photo and name
     const front = 
         <div>
-            <h1>{recipe.name}</h1>
-            <img src={recipe.image} onClick={handleFlip}/>
-            <h1>{viewComments ? <button onClick={handleClick}>hide</button> : <button onClick= {handleClick}> view comments </button>}</h1>
-            {viewComments ? recipe.comments.map(comment => <h3> <img src={comment.user.photo}/> {comment.user.username} {comment.created_at} <p> {comment.content}</p> </h3>  ) : ''} 
-            <form onSubmit={commentSubmit}>
-                <input 
-                type= 'text'
-                name="content"
-                placeholder="Add a comment"
-                value={comments.content}
-                onChange={handleChange}/>
-                <input
-                    type='submit'
-                    value='Post'/>
-            </form>
-            <Button onClick={()=> addToSaved(recipe)}style={{margin: '15px'}} variant="success">Save</Button>
-            <Button onClick={() => handleDelete()} variant="danger" style={{margin: '10px'}}>Delete</Button>
-
-         
+            <Card border="dark" style={{ width: '17rem' }}>
+                <Card.Body>
+                    <h1>{recipe.name}</h1>
+                    <Card.Img width={200} height={200} src={recipe.image} onClick={handleFlip}/>
+                    <h1>{viewComments ? <Button variant="warning" style={{position: 'center'}} onClick={handleClick}>hide</Button> : <Button variant="warning" onClick= {handleClick}> view comments </Button>}</h1>
+                    {viewComments ? recipe.comments.map(comment => <h3> <img src={comment.user.photo}/> {comment.user.username} {comment.created_at} <p> {comment.content}</p> </h3>  ) : ''} 
+                    <form onSubmit={commentSubmit}>
+                        <input 
+                        type= 'text'
+                        name="content"
+                        placeholder="Add a comment"
+                        value={comments.content}
+                        onChange={handleChange}/>
+                        <input
+                            type='submit'
+                            value='Post'/>
+                    </form>
+                    <Button onClick={()=> addToSaved(recipe)}style={{margin: '20px'}} variant="success">Save</Button>
+                    <Button onClick={() => handleDelete()} variant="danger" style={{margin: '10px'}}>Delete</Button>
+                </Card.Body>
+            </Card>
             
         </div>
 
@@ -77,11 +79,11 @@ export default function Recipe({onDeleteRecipe, recipe, addToSaved, addComment})
     const back = 
         <div>
             <h1>{recipe.name}</h1>
-            <img src={recipe.image} onClick={handleFlip}/>
+            <Card.Img width={200} height={200} style ={{width: '100px'}}src={recipe.image} onClick={handleFlip}/>
             <h3>Description: {recipe.description}</h3>
             <h3>Ingredients: {recipe.ingredients}</h3>
             <h3>Instruction: {recipe.instructions}</h3>
-            {viewComments ? <button onClick={handleClick}>hide</button> : <button onClick= {handleClick}> view comments </button>}
+            {viewComments ? <Button variant="success"  onClick={handleClick}>hide</Button> : <Button variant="success" onClick= {handleClick}> view comments </Button>}
             {viewComments ? recipe.comments.map(comment => <h3> <img src={comment.user.photo}/> {comment.user.username} {comment.created_at} <p> {comment.content}</p> </h3>  ) : ''}
             <form onSubmit={commentSubmit}>
                 <input 
@@ -94,8 +96,8 @@ export default function Recipe({onDeleteRecipe, recipe, addToSaved, addComment})
                     type='submit'
                     value='Post'/>
             </form>
-            <button onClick={()=> addToSaved(recipe)}>Save</button>
-            <button onClick={() => handleDelete()}>Delete</button>
+            <Button onClick={()=> addToSaved(recipe)}style={{margin: '20px'}} variant="success">Save</Button>
+            <Button onClick={() => handleDelete()} variant="danger" style={{margin: '10px'}}>Delete</Button>
         </div>
     // show all details on click function
 
