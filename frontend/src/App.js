@@ -124,7 +124,7 @@ useEffect(()=> {
                 element={<Signup users={users} onAddUser={onAddUser}/>}/>
               <Route
                 path='/users/:id/recipes'
-                element={<UserPage onEditUserProfile={onEditUserProfile} comments={comments} addToSaved={addToSaved} users={users} recipeList={recipeList}/>}/>
+                element={<UserPage onEditUserProfile={onEditUserProfile} comments={comments} addToSaved={addToSaved} users={users} recipeList={recipeList} onDeleteRecipe={onDeleteRecipe}/>}/>
             </Routes>
     </div>
   );

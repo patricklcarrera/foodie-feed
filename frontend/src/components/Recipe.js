@@ -5,10 +5,10 @@ import {Button , Card, Form} from 'react-bootstrap';
 
 export default function Recipe({users, onDeleteRecipe, recipe, addToSaved, addComment}){
     const {id} = recipe
-
-        const handleDelete = () => {
-        if (recipe.user_id === 20) {
-          
+    console.log("from recipe", users)
+    const handleDelete = () => {
+        if (recipe.user_id === users[0].id) {
+            console.log('success')
             fetch(`http://localhost:9292/recipes/${id}}`,
             { method: 'DELETE' })
             .then(() => onDeleteRecipe(id))
