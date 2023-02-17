@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 import Header from './Header';
 
 export default function Signup({ users, onAddUser }){
@@ -63,68 +65,87 @@ export default function Signup({ users, onAddUser }){
     
     return (
         <>
-            <h1> Sign up to Foodie Feed!</h1>
-                <form onSubmit={handleFormSubmit}>
-                        <div>  
-                            <label>Name:</label>
-                            <input 
+        <div className="loginPage">
+            <div className="login">
+            <div className="left">
+            </div>
+            <div className="right">
+                <div className="loginForm">
+                <Form onSubmit={handleFormSubmit}>
+                <Form.Group className="mb-3">
+                            <Form.Label>Name</Form.Label>
+                            <Form.Control 
+                                size="medium"
                                 type="text"
                                 name="name"
                                 value={formData.name}
                                 onChange={handleFormData}
                                 required
                             />
-                        </div>
-                        <div>  
-                            <label>Username:</label>
-                            <input 
+                        </Form.Group>
+                        <Form.Group className="mb-3"> 
+                            <Form.Label>Username</Form.Label>
+                            <Form.Control 
+                                size="medium"
                                 type="text"
                                 name="username"
                                 value={formData.username}
                                 onChange={handleFormData}
                                 required
                             />
-                        </div>
-                        <div>  
-                            <label>Email:</label>
-                            <input 
+                        </Form.Group>
+                        <Form.Group className="mb-3">  
+                            <Form.Label>Email</Form.Label>
+                            <Form.Control 
+                                size='medium' 
                                 type="text"
                                 name="email"
                                 value={formData.email}
                                 onChange={handleFormData}
                                 required
                             />
-                        </div>
-                        <div>  
-                            <label>Password:</label>
-                            <input 
+                        </Form.Group>
+                        <Form.Group className='mb-3'>  
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control 
+                                size='medium' 
                                 type="text"
                                 name="password"
                                 value={formData.password}
                                 onChange={handleFormData}
                                 required
                             />
-                        </div>
-                        <div>  
-                            <label>Profile Picture:</label>
-                            <input 
+                        </Form.Group>
+                        <Form.Group className='mb-3'>  
+                            <Form.Label>Profile Picture</Form.Label>
+                            <Form.Control
+                                as="textarea"rows={2} 
                                 type="text" 
                                 name="photo"
                                 value={formData.photo}
                                 onChange={handleFormData}
                             />
-                        </div>
-                        <div>  
-                            <label>Bio:</label>
-                            <input 
+                        </Form.Group>
+                        <Form.Group className='mb-3'>  
+                            <Form.Label>Bio</Form.Label>
+                            <Form.Control 
                                 type="text"
+                                as="textarea" rows={2}
                                 name="bio"
                                 value={formData.bio}
                                 onChange={handleFormData}
                             />
+                        </Form.Group>
+                        <div className='loginBtn'>
+                        <Button
+                        variant="outline-dark"
+                        size= 'lg'type="submit">Sign Up 🍽️</Button>
                         </div>
-                        <button type="submit">Sign up!</button>
-             </form>
+             </Form>
+             </div>
+             </div>
+             </div>
+            </div>
             </>
      )
 }

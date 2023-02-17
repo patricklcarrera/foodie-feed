@@ -9,7 +9,9 @@ export default function Recipe({users, onDeleteRecipe, recipe, addToSaved, addCo
     const {id} = recipe
 
         const handleDelete = () => {
-        if (recipe.user_id === users[0].id) {
+
+        if (recipe.user_id === 1) {
+
           
             fetch(`http://localhost:9292/recipes/${id}}`,
             { method: 'DELETE' })
@@ -35,14 +37,14 @@ export default function Recipe({users, onDeleteRecipe, recipe, addToSaved, addCo
       );
 
       
-    const commentsPopover = (
-        <Popover id="popover-basic">
-          <Popover.Header as="h3">{recipe.name}</Popover.Header>
-          <Popover.Body>
-          {recipe.comments.map(comment => <Card.Body> {comment.user.username} - <Card.Body> {comment.content}</Card.Body> </Card.Body> )}
-          </Popover.Body>
-        </Popover>
-      );
+    // const commentsPopover = (
+    //     <Popover id="popover-basic">
+    //       <Popover.Header as="h3">{recipe.name}</Popover.Header>
+    //       <Popover.Body>
+    //       {recipe.comments.map(comment => <Card.Body> {comment.user.username} - <Card.Body> {comment.content}</Card.Body> </Card.Body> )}
+    //       </Popover.Body>
+    //     </Popover>
+    //   );
 
     
 
@@ -92,18 +94,18 @@ export default function Recipe({users, onDeleteRecipe, recipe, addToSaved, addCo
                         <Button align="center" width="100px"variant="secondary">View Description</Button>
                         </OverlayTrigger>
                         </Card.Body>
-                        <Card.Body>
+                        {/* <Card.Body>
                         <OverlayTrigger trigger="click" placement="right" overlay={commentsPopover}>
                         <Button align="center" width="100px"variant="secondary">View Comments</Button>
                         </OverlayTrigger>
-                        </Card.Body>
-                        {/* <Card.Body>{viewComments ? 
+                        </Card.Body> */}
+                        <Card.Body>{viewComments ? 
                                 <Button variant="secondary" style={{position: 'center'}} onClick={handleClick}>hide</Button> : 
                                 <Button variant="secondary" onClick= {handleClick}> view comments </Button>}
                         </Card.Body>
                                 {viewComments ? recipe.comments.map(comment => 
                                 <Card.Body> Username: {comment.user.username} 
-                                <Card.Body> Comment: {comment.content}</Card.Body>  </Card.Body>  ) : ''}  */}
+                                <Card.Body> Comment: {comment.content}</Card.Body>  </Card.Body>  ) : ''} 
                         
                     <Form onSubmit={commentSubmit}>
                         <Form.Control 

@@ -14,7 +14,7 @@ return (
              <Container align='center'>
                 {/* <img src="/foodie-feed.png" href="/recipes" /> */}
                     <Navbar.Brand href="/recipes"><Image src="/feeeed.png" width="130px" roundedCircle /></Navbar.Brand>
-                    <LinkContainer to="/recipes"><Nav.Link font-size="large">All recipes</Nav.Link></LinkContainer>
+                    <LinkContainer to="/recipes"><Nav.Link >All recipes</Nav.Link></LinkContainer>
                     <LinkContainer to="/recipes/new"><Nav.Link>Add a recipe</Nav.Link></LinkContainer>
                     <LinkContainer to="/savedrecipes"><Nav.Link>My Saved Recipes</Nav.Link></LinkContainer>
                     <LinkContainer to="/users/:id/recipes"><Nav.Link>My Profile</Nav.Link></LinkContainer>

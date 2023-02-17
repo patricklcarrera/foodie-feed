@@ -10,7 +10,7 @@ export default function Search({searchTerm, changeSearch}){
 
     return (
       
-        <InputGroup className="mb-3">
+        <InputGroup className="mb-3" style={{"padding": "10px", "width" : "50%", "margin": "auto"}}>
           <InputGroup.Text id="inputGroup-sizing-default">
             Search
           </InputGroup.Text>
