@@ -1,14 +1,10 @@
 import {useState} from 'react';
 import Header from './Header';
-import { useNavigate } from "react-router-dom";
 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 export default function AddRecipe({addRecipe}){
-
-    const navigate = useNavigate()
-
     const initialFormData = {
         name: '',
         description: '',
@@ -36,7 +32,6 @@ export default function AddRecipe({addRecipe}){
         .then(() => {
         addRecipe(formData)
         setFormData(initialFormData)
-        navigate("/recipes")
     }) }
 
     return(
