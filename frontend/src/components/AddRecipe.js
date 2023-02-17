@@ -42,9 +42,10 @@ export default function AddRecipe({addRecipe}){
     return(
         <div>
             <Header/>
-        <h1 style={{"text-align" : "center"}} className="addNewRecipeText">Add a new recipe🥘</h1>
+        <h1 style={{"padding": "20px", "text-align" : "center"}} className="addNewRecipeText">Add a new recipe🥘</h1>
         <Form onSubmit={handleSubmit} className="addRecipeForm">
             <Form.Group>
+                <div style={{"padding": "5px"}}>
                 <Form.Control
                     type="text"
                     as="textarea" rows={1}
@@ -52,6 +53,8 @@ export default function AddRecipe({addRecipe}){
                     placeholder="Name"
                     value={formData.name}
                     onChange={handleChange}/>
+                </div>
+                <div style={{"padding": "5px"}}>
                 <Form.Control
                     type="text"
                     as="textarea" rows={2}
@@ -59,6 +62,8 @@ export default function AddRecipe({addRecipe}){
                     placeholder='Description'
                     value={formData.description}
                     onChange={handleChange}/>
+                </div>
+                <div style={{"padding": "5px"}}>
                 <Form.Control
                     type="text"
                     as="textarea" rows={3}
@@ -66,6 +71,8 @@ export default function AddRecipe({addRecipe}){
                     placeholder='Ingredients'
                     value={formData.ingredients}
                     onChange={handleChange}/>
+                </div>
+                <div style={{"padding": "5px"}}>
                 <Form.Control
                     type="text"
                     name="instructions"
@@ -73,18 +80,23 @@ export default function AddRecipe({addRecipe}){
                     placeholder='Instructions'
                     value={formData.instructions}
                     onChange={handleChange}/>
+                </div>
+                <div style={{"padding": "5px"}}>
                 <Form.Control
                     type="text"
                     name="image"
                     placeholder="Image Url"
                     value={formData.image}
                     onChange={handleChange}/>
+                </div>
+                <div style={{"padding": "5px", "text-align": "center"}}>
                 <Button
                     className='addButton'
                     type='submit'
                     variant='outline-warning'>
                         Add
                 </Button>
+                </div>
             </Form.Group>
         </Form>
         </div>
