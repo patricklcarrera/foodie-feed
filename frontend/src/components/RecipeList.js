@@ -19,7 +19,7 @@ export default function RecipeList({setComments,comments, onDeleteRecipe, recipe
         setComments={setComments}
         />)
     
-        console.log({users})
+        console.log(users)
 
     return(
         <>

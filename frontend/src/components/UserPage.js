@@ -102,7 +102,7 @@ export default function UserPage({ onDeleteRecipe,recipeList, users, comments, a
                         </div>
                     </div>
                     <div class="row row-cols-5 g-3" style={{margin: '5%', textAlign: 'center', width: '100%'}}>
-                        {recipeList.filter(recipe => recipe.user_id === users[0].id).map(recipe => <Recipe onDeleteRecipe={onDeleteRecipe} key={recipe.id}recipe={recipe} comments={comments} addToSaved={addToSaved}/>)}
+                        {recipeList.filter(recipe => recipe.user_id === users[0].id).map(recipe => <Recipe onDeleteRecipe={onDeleteRecipe} key={recipe.id}recipe={recipe} users={users} comments={comments} addToSaved={addToSaved}/>)}
                     </div>
                     
                 </div>

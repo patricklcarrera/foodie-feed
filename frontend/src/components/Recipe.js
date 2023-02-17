@@ -9,7 +9,9 @@ export default function Recipe({users, onDeleteRecipe, recipe, addToSaved, addCo
     const {id} = recipe
 
         const handleDelete = () => {
+
         if (recipe.user_id === 1) {
+
           
             fetch(`http://localhost:9292/recipes/${id}}`,
             { method: 'DELETE' })
@@ -124,36 +126,37 @@ export default function Recipe({users, onDeleteRecipe, recipe, addToSaved, addCo
         </div>
 
 
-    const back = 
-        <div>
-            <Card border="dark" style={{ width: '23rem' }}>
-                <Card.Title>{recipe.name}</Card.Title>
-                    <Card.Img  style ={{width: '100px'}}src={recipe.image} onClick={handleFlip}/>
-                        <Card.Body>Description: {recipe.description}</Card.Body>
-                        <Card.Body>Ingredients: {recipe.ingredients}</Card.Body>
-                        <Card.Body>Instruction: {recipe.instructions}</Card.Body>
-                            {viewComments ? <Button variant="secondary"  onClick={handleClick}>hide</Button> : <Button variant="secondary" onClick= {handleClick}> view comments </Button>}
-                            {viewComments ? recipe.comments.map(comment => <ul> Username: {comment.user.username} <Card.Body> Comment: {comment.content}</Card.Body> </ul>  ) : ''}
-                <form onSubmit={commentSubmit}>
-                    <input 
-                    type= 'text'
-                    name="write comment"
-                    placeholder="Add a comment"
-                    value={comments.content}
-                    onChange={handleChange}/>
-                    <input
-                        type='submit'
-                        value='Post'/>
-                </form>
-                <Button onClick={()=> addToSaved(recipe)}style={{margin: '20px'}} variant="dark">Save</Button>
-                <Button onClick={() => handleDelete()} variant="dark" style={{margin: '10px'}}>Delete</Button>
-            </Card>
-        </div>
+    // const back = 
+    //     <div>
+    //         <Card border="dark" style={{ width: '23rem' }}>
+    //             <Card.Title>{recipe.name}</Card.Title>
+    //                 <Card.Img  style ={{width: '100px'}}src={recipe.image} onClick={handleFlip}/>
+    //                     <Card.Body>Description: {recipe.description}</Card.Body>
+    //                     <Card.Body>Ingredients: {recipe.ingredients}</Card.Body>
+    //                     <Card.Body>Instruction: {recipe.instructions}</Card.Body>
+    //                         {viewComments ? <Button variant="secondary"  onClick={handleClick}>hide</Button> : <Button variant="secondary" onClick= {handleClick}> view comments </Button>}
+    //                         {viewComments ? recipe.comments.map(comment => <ul> Username: {comment.user.username} <Card.Body> Comment: {comment.content}</Card.Body> </ul>  ) : ''}
+    //             <form onSubmit={commentSubmit}>
+    //                 <input 
+    //                 type= 'text'
+    //                 name="write comment"
+    //                 placeholder="Add a comment"
+    //                 value={comments.content}
+    //                 onChange={handleChange}/>
+    //                 <input
+    //                     type='submit'
+    //                     value='Post'/>
+    //             </form>
+    //             <Button onClick={()=> addToSaved(recipe)}style={{margin: '20px'}} variant="dark">Save</Button>
+    //             <Button onClick={() => handleDelete()} variant="dark" style={{margin: '10px'}}>Delete</Button>
+    //         </Card>
+    //     </div>
     // show all details on click function
 
     // display either the front or back depending on the current State
 return (
-    isBack ? back : front
+    // isBack ? back : front
+    front
 )
 }
 
