@@ -55,7 +55,7 @@ export default function UserPage({ onDeleteRecipe,recipeList, users, comments, a
     }
 
     const form = 
-        <form onSubmit={handleFormSubmit} stylte={{padding: '3%', margin: '3%'}}>
+        <form onSubmit={handleFormSubmit} style={{padding: '3%', margin: '3%'}}>
             <div>
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Profile Picture</Form.Label>
