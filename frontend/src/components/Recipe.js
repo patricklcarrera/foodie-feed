@@ -9,7 +9,7 @@ export default function Recipe({users, onDeleteRecipe, recipe, addToSaved, addCo
     const {id} = recipe
 
         const handleDelete = () => {
-        if (recipe.user_id === 32) {
+        if (recipe.user_id === users[0].id) {
           
             fetch(`http://localhost:9292/recipes/${id}}`,
             { method: 'DELETE' })
