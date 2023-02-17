@@ -1,9 +1,11 @@
 import React, { useState} from 'react';
 import {Button , Card, Form} from 'react-bootstrap';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Popover from 'react-bootstrap/Popover';
 
 
 
-export default function Recipe({users, onDeleteRecipe, recipe, addToSaved, addComment}){
+export default function Recipe({users, onDeleteRecipe, recipe, addToSaved, addComment }){
     const {id} = recipe
 
         const handleDelete = () => {
@@ -19,7 +21,30 @@ export default function Recipe({users, onDeleteRecipe, recipe, addToSaved, addCo
         }
         
     }
-  
+    console.log(users)
+
+    const descriptionPopover = (
+        <Popover id="popover-basic">
+          <Popover.Header as="h3">{recipe.name}</Popover.Header>
+          <Popover.Body>
+                        <Card.Body>Description: {recipe.description}</Card.Body>,
+                        <Card.Body>Ingredients: {recipe.ingredients}</Card.Body>,
+                        <Card.Body>Instructions: {recipe.instructions}</Card.Body>
+          </Popover.Body>
+        </Popover>
+      );
+
+      
+    const commentsPopover = (
+        <Popover id="popover-basic">
+          <Popover.Header as="h3">{recipe.name}</Popover.Header>
+          <Popover.Body>
+          {recipe.comments.map(comment => <Card.Body> {comment.user.username} - <Card.Body> {comment.content}</Card.Body> </Card.Body> )}
+          </Popover.Body>
+        </Popover>
+      );
+
+    
 
     const [viewComments, setViewComments] = useState(false)
     const handleClick = () => {
@@ -61,15 +86,25 @@ export default function Recipe({users, onDeleteRecipe, recipe, addToSaved, addCo
             <Card border="dark" style={{ width: '17rem' }}>
                 <Card.Body>
                     <Card.Title>{recipe.name}</Card.Title>
-                    <Card.Img width={200} height={200} src={recipe.image} onClick={handleFlip}/>
-                        <Card.Body>{viewComments ? 
+                    <Card.Img width={200} height={200} src={recipe.image}/>
+                      <Card.Body>
+                        <OverlayTrigger trigger="click" placement="right" overlay={descriptionPopover}>
+                        <Button align="center" width="100px"variant="secondary">View Description</Button>
+                        </OverlayTrigger>
+                        </Card.Body>
+                        <Card.Body>
+                        <OverlayTrigger trigger="click" placement="right" overlay={commentsPopover}>
+                        <Button align="center" width="100px"variant="secondary">View Comments</Button>
+                        </OverlayTrigger>
+                        </Card.Body>
+                        {/* <Card.Body>{viewComments ? 
                                 <Button variant="secondary" style={{position: 'center'}} onClick={handleClick}>hide</Button> : 
                                 <Button variant="secondary" onClick= {handleClick}> view comments </Button>}
                         </Card.Body>
                                 {viewComments ? recipe.comments.map(comment => 
                                 <Card.Body> Username: {comment.user.username} 
-                                <Card.Body> Comment: {comment.content}</Card.Body> 
-                        </Card.Body>  ) : ''} 
+                                <Card.Body> Comment: {comment.content}</Card.Body>  </Card.Body>  ) : ''}  */}
+                        
                     <Form onSubmit={commentSubmit}>
                         <Form.Control 
                             type= 'text'
