@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from "react-router-dom";
 import Header from './Header';
-import mainicon from './assets/mainicon.png'
+//import icon from './icon.png'
+import foodieFeed from './foodieFeed.png';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
 export default function Login({ users }){
+
 
     //clears form boxes
     const initialFormValues = {
@@ -53,32 +57,49 @@ export default function Login({ users }){
     }
     
     return (
-        <>
-        <img src={mainicon} style={{width: '300px'} }/>
-                <form onSubmit={handleFormSubmit}>
-                        <div>  
-                            <label>Username:</label>
-                            <input 
-                                type="text" 
-                                onChange={handleFormData}
-                                value = {formData.username}
-                                name = "username"
-                            />
-                        </div>
-                        <div>  
-                            <label>Password:</label>
-                            <input
-                                type="text" 
-                                onChange={handleFormData}
-                                value = {formData.password}
-                                name = "password"
-                            />
-                        </div>
-                        <button type="submit">Log in</button>
-                </form>
-                    <NavLink to='/signup'><button>Sign Up</button></NavLink>
-        </>
+        
+        <div className="loginPage">
+            <div className="login">
+            <div className="left">
+            </div>
+            <div className="right">
+                <div className="loginForm">
+                <Form onSubmit={handleFormSubmit}>
+                <Form.Group className="mb-3">  
+                    <Form.Label>Username</Form.Label>
+                    <Form.Control
+                        size="medium"
+                        type="text" 
+                        onChange={handleFormData}
+                        value = {formData.username}
+                        name = "username"/>
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label>Password</Form.Label>
+                <Form.Control
+                        type="password" 
+                        onChange={handleFormData}
+                        value = {formData.password}
+                        name = "password"
+                    />
+                </Form.Group >
+                <div className="loginBtn">
+                    <Button 
+                    variant="outline-dark"
+                    size= 'lg'
+                    type="submit">Log In</Button>
+                </div>
+                <div className='loginBtn'>
+                    <NavLink to='/signup'><Button
+                    variant="outline-dark"
+                    size= 'lg'
+                    >Sign Up</Button></NavLink>
+                </div>
+                </Form>
+                </div>
+            </div>
+            </div>
+        </div>
     )
- 
     
 }

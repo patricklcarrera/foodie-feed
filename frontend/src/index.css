@@ -1,7 +1,10 @@
 #body {
     background: #ffffff;
 }
-
+@font-face{
+    font-family: 'login';
+    src: url(./fonts/login.otf)
+}
 @font-face {
     font-family: 'Flower Glory';
     src: url(./fonts/Flower\ Glory.ttf);
@@ -23,5 +26,48 @@
 .addButton {
     width: 50%;
     margin: auto
+}
+.loginPage {
+    background-color: #ffa500; 
+    height: 100vh; 
+    margin: 0px
+}
+.login {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center
+}
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    justify-content: center;
+    width: 350px;
+    background-color: rgb(255, 234, 194);
+    border: 1px solid rgb(255, 255, 255);
+    padding: 40px;
+    margin: 10px
+}
+.left {
+    height: 800px;
+    width: 430px;
+    background-image: url("../../images/icon.png");
+    background-repeat: no-repeat;
+
+}
+.mb-3{
+    font-family: 'addRecipe';
+    font-size: 25px;
+}
+
+.loginBtn{
+    padding: 10px;
+    font-family: 'addRecipe';
+    text-align: center;
+
 }
 

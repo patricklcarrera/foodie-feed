@@ -4,10 +4,11 @@ import Search from './Search'
 import Header from './Header'
 
 
-export default function RecipeList({ onDeleteRecipe, recipeList, searchTerm, changeSearch, addToSaved, users, handleDelete, addComment}){
+export default function RecipeList({setComments,comments, onDeleteRecipe, recipeList, searchTerm, changeSearch, addToSaved, users, handleDelete, addComment}){
 
 
     const recipes = recipeList.map(recipe => <Recipe 
+        comments={comments}
         key={recipe.id}
         onDeleteRecipe={onDeleteRecipe}  
         handleDelete={handleDelete}
@@ -15,6 +16,7 @@ export default function RecipeList({ onDeleteRecipe, recipeList, searchTerm, cha
         recipe={recipe} 
         users={users}
         addComment={addComment}
+        setComments={setComments}
         />)
     
         console.log(users)

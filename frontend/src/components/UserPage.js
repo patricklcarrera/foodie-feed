@@ -55,7 +55,7 @@ export default function UserPage({ onDeleteRecipe,recipeList, users, comments, a
     }
 
     const form = 
-        <form onSubmit={handleFormSubmit} stylte={{padding: '3%', margin: '3%'}}>
+        <form onSubmit={handleFormSubmit} style={{padding: '3%', margin: '3%'}}>
             <div>
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Profile Picture</Form.Label>
@@ -92,7 +92,7 @@ export default function UserPage({ onDeleteRecipe,recipeList, users, comments, a
                 <div style={{ margin: '0 auto'}}>
                     <div>
                         <div style={{ padding: '1%', width: '50%', margin: '0 auto', display: 'inline block', textAlign: 'center'}}>
-                            <Image src={users[0].photo} thumbnail />
+                            <Image style={{width: '20%'}}src={users[0].photo} thumbnail />
                         </div>
                         <div style={{ padding: '1%', display: 'inline block', margin: '0 auto', width: '50%', textAlign: 'center'}}>
                             <h3 style={{display: 'block', margin: '3%'}}>{users[0].username}</h3>

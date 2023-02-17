@@ -10,11 +10,11 @@ puts "🌱 Seeding spices..."
 
 
 User.create(
-    name: "admin",
-    username: "admin",
+    name: "Jon Snow",
+    username: "KingOfTheNorth",
     email: "admin@mail.com",
-    password: "123",
-    photo: Faker::Avatar.image,
+    password: "iknownothing",
+    photo: "https://www.usmagazine.com/wp-content/uploads/2022/12/Everything-to-Know-About-the-Jon-Snow-Series-HBO-Is-Developing-With-Game-of-Thrones-Kit-Harington-125.jpg?quality=86&strip=all",
     bio: "My favorite food is #{Faker::Food.dish}"
 )
 
