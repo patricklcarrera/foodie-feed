@@ -47,7 +47,7 @@ This component is a child of ```RecipePage.js, SavedRecipe.js, and UserPage.js``
 
 ### Frontend
 
-Using React, FoodieFeed is a multi-page single-page application.  App.js is our main parent component.
+Using React, FoodieFeed is a single-page application.  App.js is our main parent component.
 
 React Component Tree:
 
