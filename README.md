@@ -1,6 +1,6 @@
 # FoodieFeed
 
-This project was designed to practice and showcase our group's abilities in React and Ruby.  We created a social media app specific to recipes.  This is a fun app to share and discover new reciepes with other foodie enthusiasts like yourself! On this website, users will be able to:
+This project was designed to practice and showcase our group's abilities in React and Ruby.  We created a social media app specific to recipes.  This is a fun app to share and discover new recipes with other foodie enthusiasts like yourself! On this website, users will be able to:
 * Create a profile
 * Post new recipes
 * Delete recipes
